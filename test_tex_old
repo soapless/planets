@@ -161,8 +161,6 @@
 \definecolor{green}{rgb}{0.0, 0.0, 0.0}
 \definecolor{red}{rgb}{0.0, 0.0, 0.0}
 %\definecolor{yellow}{rgb}{0.0, 0.0, 0.0}
-%\definecolor{Magenta}{rgb}{0.0, 0.0, 0.0}
-
 
 \begin{document}
 
@@ -170,13 +168,14 @@
 
 \title{Understanding the Impact of Stroke on Brain Motor Function: A Hierarchical Bayesian Approach}
 %%%%%%original format %%%%%%%%
+\author{}
 \author{Zhe Yu$^{1}$ \and Raquel Prado$^{2}$ \and Erin B. Quinlan$^{3}$ \and Steven C. Cramer$^{4}$  \and Hernando Ombao$^{1}$
 }
 \footnotetext[1]{Department of Statistics, University of California at Irvine}
 \footnotetext[2]{Department of Applied Mathematics \& Statistics, University of California at Santa Cruz}
 \footnotetext[3]{Department of Anatomy \& Neurobiology, University of California at Irvine}
 \footnotetext[4]{Department of Neurobiology, University of California at Irvine}
-%%%%%%original format %%%%%%%%
+%%%%%original format %%%%%%%%
 
 %\date{}
 \maketitle
@@ -234,7 +233,6 @@ is to investigate the impact of stroke by comparing brain activation and connect
 
 
 \subsection{Overview of the fMRI Stroke Study}
-\label{sec:intro:overview}
 The fMRI study involved patients who had suffered a stroke and had residual motor deficit on the right side of the body, and healthy subjects.
 During the fMRI experiment, each subject alternated between a right hand grasp-release movement
 (task condition, also called the stimulus condition) and rest (rest condition).
@@ -292,14 +290,15 @@ while controlling for variation in the HRFs.
 \subsection{Current Statistical Methods and Their Limitations}
 In the past 20 years, there has been an increasing number of papers on statistical methods for fMRI data. \cite{lindquist2008review} and \cite{Zhang2014unpubished} provide detailed reviews on existing methods.
 Methods for brain activation are
-proposed in \cite{Fristonetal1994, Worsley1995, Smith2007, David2008, Guo2008, Xu2009, Degras2014}.
-Methods for brain connectivity are developed in \cite{Friston2003, Harrison2003, Bowman2008, Cribben2012, Kang2012, Gorrostieta2013, Luo2014}.
+proposed in \cite{Fristonetal1994, Worsley1995, Smith2007, David2008, Guo2008, Xu2009} and \cite{Degras2014}.
+Methods for brain connectivity are developed in \cite{Friston2003, Harrison2003, Bowman2008, Cribben2012, Kang2012, Gorrostieta2013}
+and \cite{Luo2014}.
 
 While methods for activation usually do not consider connectivity estimation,
 \citet{David2008} in fact considered connectivity estimation, but used a two-stage approach that
 estimates connectivity from the residuals of the activation analysis, and hence is not optimal
 for properly assessing the uncertainty associated to those estimates. \citet{Harrison2003} estimated
-connectivity using vector-autoregressive (VAR) models, while \citet{Cribben2012} developed dynamic
+connectivity using vector-autoregressive (VAR) models, while \citet{Cribben2012} developed a dynamic
 connectivity regression which models changes in connectivity, but none of these approaches
 take into account the systematic changes in the BOLD response induced by external stimuli.
 \citet{Gorrostieta2013} considered the BOLD response evoked by stimuli and also the differential connectivity across different experimental conditions.
@@ -318,7 +317,7 @@ Non-linear parameterization approaches include gamma functions, cosine functions
 problem and numerical stability issues. On the other hand, linear parameterization is easier from
 the inferential viewpoint, but often requires more parameters and constraints in order to provide
 enough flexibility in modeling HRF shapes.
-\citet{Woolrich2004} proposed constrained linear basis sets which are able to provide both flexible and reasonable HRF shapes with a relatively small number of HRF basis functions while keeping the computation cost low. Therefore, in this paper we adopt the constrained linear basis approach to parameterize the HRFs.
+\citet{Woolrich2004} proposed constrained linear basis sets which are able to provide both flexible and reasonable HRF shapes with a relatively small number of HRF basis functions, while keeping the computation cost low. Therefore, in this paper we adopt the constrained linear basis approach to parameterize the HRFs.
 
 In a nutshell, we propose a model that has the following advantages over currently available
 methods: (1) it simultaneously estimates activation, connectivity and HRFs; (2) it provides
@@ -327,12 +326,12 @@ it increases the power in detecting group differences by pooling information acr
 via hierarchical modeling; (4) it provides full posterior distributions of all the model
 parameters, including group-specific activation parameters and brain connectivity networks; (5) it can incorporate available scientifically relevant prior information.
 
-The remainder of the paper is organized as follows. In Section \ref{sec:data} we describe the stroke study and the
-fMRI data. In Section \ref{sec:method} we develop our approach including
+The remainder of the paper is organized as follows. In Section 2 we describe the stroke study and the
+fMRI data. In Section 3 we develop our approach including
 the model, the prior distributions and the inferential procedure.
-In Section \ref{sec:simulation} we present the simulation studies, and in Section \ref{sec:analysis} we present the analysis of the fMRI
+In Section 4 we present the simulation studies, and in Section 5 we present the analysis of the fMRI
 data from
-the stroke study. We summarize our approach and discuss future research directions in Section \ref{sec:conclusion}.
+the stroke study. We summarize our approach and discuss future research directions in Section 6.
 
 
 \section{\uppercase{Experimental Design and fMRI data}}
@@ -391,7 +390,7 @@ with ROI $p = 1, 2, \dots, P$; subject $s = 1, 2, \dots, S$; session $r = 1, 2, 
 $t = 1, 2, \dots, T$ (TR).
 The response variable $y_p\sr(t)$ is the preprocessed fMRI signal; the covariate $x_{pk}\sr(t)$
 represents the expected shape of BOLD response, which is the convolution between the HRF, denoted as $h_p\s(t),$ and the
-known binary condition {\color{Magenta}indicator $c_k(t),$} with $c_k(t)=1$ when the $k$th condition is on and {\color{Magenta}0} otherwise
+known binary condition indicator $c_k(t),$ with $c_k(t)=1$ when the $k$th condition is on and $c_k(t)=0$ otherwise
 (we use $k=1$ for the task condition and $k=2$ for the rest condition, see Figure \ref{real-design} for the timing of the conditions); the regression coefficient $\beta_{pk}\s$
 represents the amplitude of the BOLD response which indirectly reflects the strength of
 neuronal activity;
@@ -429,22 +428,24 @@ where $\veps\s(t) = [\epsilon_1\sr(t), \dots, \epsilon_P\sr(t)]' \stackrel{ind}{
 \label{varcoefcases}
 \end{eqnarray}
 Denote the $(p,q)$-th element of $\Phi\sst(\ell,t)$ as $\Phi\sst(\ell,t)\pq$. This quantity describes the linear
-relation between ROIs $p$ and $q$ at time lag $\ell$ at time {\color{Magenta}$t-\ell$}: when $\Phi\sst(\ell,t)\pq \ne 0$,
+relation between ROIs $p$ and $q$ at time lag $\ell$: when $\Phi\sst(\ell,t)\pq \ne 0$,
 ROI $q$ at time $t-\ell$ helps predict ROI $p$ at the current time point $t$. The temporal precedence
-of ROI $q$ in this relationship suggests the interpretation of $\Phi\sst(\ell,t)\pq$ as a measure of the directed influence from ROI $q$ to ROI $p$. This type of influence is termed as ``effective connectivity'' in neuroscience. Therefore, $\Phi\sst(\ell,t)\pq$ can be used to measure effective connectivity from ROI $q$ to ROI $p$. For simplicity, in the remainder of this paper we refer to this as ``connectivity''. Also, it is possible that the manner in which an ROI influences another varies under different conditions. Hereby, we allow $\Phi\sst(\ell,t)\pq$ to depend on the condition at the corresponding past time point as specified in Equation \eqref{varcoefcases}; {\color{Magenta}it can either be $\Phi_1\sst(\ell)$, or $\Phi_2\sst(\ell)$, depending on $c_1(t)$.}
+of ROI $q$ in this relationship suggests the interpretation of $\Phi\sst(\ell,t)\pq$ as a measure of the directed influence from ROI $q$ to ROI $p$. This type of influence is termed as ``effective connectivity'' in neuroscience. Therefore, $\Phi\sst(\ell,t)\pq$ can be used to measure effective connectivity from ROI $q$ to ROI $p$. For simplicity, in the remainder of this paper we refer to this as ``connectivity''. Also, it is possible that the manner in which an ROI influences another varies under different conditions. Hereby, we allow $\Phi\sst(\ell,t)\pq$ to depend on the condition at the corresponding past time point as specified in Equation \eqref{varcoefcases}; it can either be $\Phi_1\sst(\ell)$, or $\Phi_2\sst(\ell)$, depending on $c_1(t)$.
+
+
 
 
 We use a Bayesian variable selection approach \citep{mitchellbeauchamp,georgemcculloch,ishwaranrao}
-to determine which elements of {\color{Magenta}$\Phi_k\sst(\ell)$}
+to determine which elements of $\Phi_k\sst(\ell)$
 are different from zero, and therefore infer the connectivity network across ROIs. More
-specifically, we impose a ``spike and slab'' structure on {\color{Magenta}$\Phi_k\sst(\ell)$} given by
+specifically, we impose a ``spike and slab'' structure on $\Phi_k\sst(l)$ given by
 \begin{eqnarray}
 \label{phistar}
 \Phi_k\sst(\ell)_{pq} &=& \Phi_k\s(\ell)_{pq} \vxi_{pq}\s(\ell),~~\text{with}~
 \Phi_k\s(\ell)_{pq} \in \R, ~~  \vxi_{pq}\s(\ell) \in \{0, ~1\},
 \end{eqnarray}
 so that $\Phi_k\sst(\ell)_{pq} = 0 ~\Leftrightarrow~ \vxi_{pq}\s(\ell)=0$ (a.s.); $\Pr(\Phi_k\sst(\ell)_{pq} \ne 0) = \Pr(\vxi_{pq}\s(\ell)=1)$, and $\Phi_k\sst(\ell)_{pq} = \Phi_k\s(\ell)_{pq} ~\Leftrightarrow ~\vxi_{pq}\s(\ell)=1$ (a.s.).
-When $\Phi_k\sst(\ell)\pq=0$, or equivalently when $\vxi_{pq}\s(\ell)=0$ for all $\ell$,
+When $\Phi_k\sst(\ell)\pq=0$, or equivalently, when $\vxi_{pq}\s(\ell)=0$ for all $\ell$,
 we say that there is no
 connectivity from ROI $q$ to ROI $p$. Otherwise, there is connectivity from ROI $q$ to ROI $p$.
 
@@ -471,8 +472,6 @@ y_p\sr(t) &=& \beta_{p0}\s + \Lambda_1(t,:) \vd_p\s\beta_{p1}\s+ \Lambda_2(t,:) 
 \end{eqnarray*}
 
 \subsection{Hierarchical Model: Group Level}
-\label{sec:method:hie-group}
-
 Since the signal to noise ratio is usually low in fMRI data (typically below 5\%), it is beneficial to
 borrow information across subjects within a relatively homogeneous group. In order to do this,
 we use a Bayesian hierarchical modeling approach.
@@ -550,7 +549,7 @@ and $\vmu_{h_p}^g = H\vmu_{\vd_p}^g$ is the mean HRF of ROI $p$ for group $g$.
 \includegraphics[scale=.5]{./graph/realdata/pre-hrf-roi-stroke.pdf}\\(b)
 \end{minipage}
 \caption[1]{A preliminary analysis of HRFs.
-(a) HRFs of all healthy subjects at a given ROI. (b) HRFs of all stroke subjects at the same ROI. The black curve is canonical HRF.}
+(a) HRFs of all healthy subjects at a given ROI. (b) HRFs of all stroke subjects at the same ROI. The black curve is the canonical HRF.}
 \label{pre-hrf}
 \end{figure}
 
@@ -595,7 +594,7 @@ and simultaneously penalizes shapes that deviate from the space of reasonable sh
 Note that our prior beliefs about the HRFs are adopted through the choice of the duration parameters and the
 depth parameters. The normal distribution just provides a convenient approximation of such prior beliefs.
 In order to determine if the prior structure is reasonable, visual checks of the quality of the basis set
-can be performed by generating prior samples of the HRFs using the basis vectors and {\color{Magenta}the} corresponding coefficients randomly
+can be performed by generating prior samples of the HRFs using the basis vectors and the corresponding coefficients randomly
 sampled from the normal distribution described above.
 Figure \ref{pca}(c) displays examples of randomly generated HRFs from the HRF basis set used in our analysis.
 The HRFs sampled from the prior indicate that this HRF basis representation is sufficiently
@@ -638,7 +637,7 @@ $\vPhi_t\s(\text{B})= I_P - \sum_{\ell=1}^L\Phi\sst(\ell,t)\text{B}^{\ell}$, whe
 \end{eqnarray}
 Then, the equations in \eqref{maineq-vbeta}
 can be written in terms of the temporally uncorrelated noise terms, leading to the following two MLR components, one
-for the BOLD amplitude parameters $\vbeta\s$ and {\color{Magenta}the other} for the HRF parameters $\vd\s:$
+for the BOLD amplitude parameters $\vbeta\s$ and another for the HRF parameters $\vd\s:$
 \begin{eqnarray}
 \tilde{\vy}\sr(t) & = & \tilde{X}\s(t)\vbeta\s + \veps\sr(t),
 \label{maineq-white-vbeta} \\
@@ -708,22 +707,22 @@ can also be obtained similarly from $H\vmu_{\vd_p}^g$. Neuroscientists are usual
 
 \subsection{Computational Aspects}
 \label{sec:method:computation}
-Given the large number of parameters involved in the model, MCMC sampling is computationally {\color{Magenta}expensive}.
+Given the large number of parameters involved in the model, MCMC sampling is computationally expensive.
 In order to increase the computational efficiency, we implemented the sampling algorithm for the subject-level parameters
 in C$++$ core using the R package {\it RcppArmadillo} \citep{RcppArmadillo}. The sampling for the remaining parameters was implemented in R.
 We also considered parallel computing so that the subject-level parameters were sampled simultaneously for all subjects.
 
 For datasets with a large number of ROIs the current MCMC algorithm can be too expensive
-computationally{\color{Magenta}, even with C$++$ implementation and parallel computing}.
+computationally, even with C$++$ implementation and parallel computing. 
 This is mainly due to multiplications and inversions of large matrices involved in the estimation
 of the connectivity parameters $\vphi\s$, and the computation of the probabilities
-$\Pr(\vxi_{pq}\s=\vell_j)$ {\color{Magenta}conditional on} $Y$ and the remaining parameters for $j=0,\dots, L; ~p,q=1,\dots, P,$
+$\Pr(\vxi_{pq}\s=\vell_j)$ conditional on $Y$ and the remaining parameters for $j=0,\dots, L; ~p,q=1,\dots, P,$
 since they require likelihood evaluations sequentially for $P^2$ times.
 Computation time can be reduced by imposing special sparsity structures, e.g.,
 row-wise sparsity, instead of element-wise sparsity for the spike and slab prior, at the cost of
-decreasing flexibility on the sparsity of the connectivity {\color{Magenta}network}.
+decreasing flexibility on the sparsity of the connectivity network.
 Another way to speed up the estimation is to consider algorithms that approximate the joint posterior
-distribution such as variational Bayes (VB). A VB algorithm for approximate posterior inference is discussed in the next subsection.
+distribution such as variational Bayes (VB). A VB algorithm for approximate posterior inference is discussed below.
 
 
 
@@ -741,9 +740,9 @@ the previous section can be written as
 $$p(\Theta|Y) \propto f(Y|\vbeta,\vd,\vphi,\vxi,\Sigma) p(\vbeta) p(\vd) p(\vphi) \prod_{pq} p(\vxi_{pq}) p(\Sigma),$$
 with $f(Y|\cdot)$ being the likelihood function and $\Theta=(\vbeta,\vd,\vphi,\vxi_{11},\vxi_{12},\ldots,\vxi_{PP}, \Sigma).$
 The approximation function we use has the form $Q(\Theta) = Q(\vbeta)Q(\vd)Q(\vphi)\prod_{pq}Q(\vxi_{pq})Q(\Sigma).$
-Let $\vtheta$ denote one of the parameter subsets in $\Theta$, i.e., $\vtheta$ could be one of $\vbeta$, $\vd$, $\vphi$, $\vxi_{pq}$, for some {\color{Magenta}$(p,q),$} or $\Sigma$; and let $\vtheta^C$ denote $\Theta \setminus \vtheta$.
+Let $\vtheta$ denote one of the parameter subsets in $\Theta$, i.e., $\vtheta$ could be one of $\vbeta$, $\vd$, $\vphi$, $\vxi_{pq}$, for some $(p,q),$ or $\Sigma$; and let $\vtheta^C$ denote $\Theta \setminus \vtheta$.
 In order to obtain $\log Q(\vtheta)$, the approximate log posterior density for the parameter set $\vtheta$
-that minimizes the Kullback-Leibler {\color{Magenta}divergence} (KL) between the approximation and the posterior denoted as $KL(Q||p)$,
+that minimizes the Kullback-Leibler (KL) divergence between the approximation and the posterior denoted as $KL(Q||p)$,
 we need to calculate $\E_{Q(\vtheta^C)}\log p(\Theta|Y)$ (see, e.g., \citeauthor{Gelman2013}, \citeyear{Gelman2013}).
 Then, we proceed as follows. Define
 $\parallel \vx \parallel^2_{A}=\vx'A^{-1}\vx$. Given the conjugate structure in the model,
@@ -772,7 +771,7 @@ denote $\{\tilde{\vmu}_{\vxi,pq}: p,q\in \{1, \dots, P\}\}$ and $\{\tilde{\Sigma
 respectively; and let $\tilde{\vmu}_{\vxi, -pq}$ and $\tilde{\Sigma}_{\vxi, -pq}$ denote
 $\{\tilde{\Sigma}_{\vxi,p'q'}: p',q' \in \{1, \dots, P\}^2\setminus \{(p,q)\}\}$ and $\{\tilde{\Sigma}_{\vxi,p'q'}:
 p',q'\in\{1, \dots, P\}^2\setminus \{(p,q)\}\}$.
-Define $\tilde{\mu}_{\Sigma^{-1}}$ to be $E_Q(\Sigma^{-1})= \tilde{\Psi}_{\vtheta}^{-1}\tilde{\nu}_{\vtheta}$.
+Define $\tilde{\mu}_{\Sigma^{-1}}$ to be $E_Q(\Sigma^{-1})= \tilde{\Psi}_{\Sigma}^{-1}\tilde{\nu}_{\Sigma}$.
 Then, as shown in the supplementary material, it is possible to write,
 $\tilde{\mu}_{\vbeta} = f_{\tilde{\mu}_{\vbeta}}(\tilde{\mu}_{\vd}, \tilde{\mu}_{\vphi}, \tilde{\mu}_{\vxi}, \tilde{\mu}_{\Sigma^{-1}}),$
 $\tilde{\Sigma}_{\vbeta} = f_{\tilde{\Sigma}_{\vbeta}}(\tilde{\mu}_{\vd}, \tilde{\mu}_{\vphi}, \tilde{\mu}_{\vxi},  \tilde{\mu}_{\Sigma^{-1}}),$
@@ -793,7 +792,7 @@ $\tilde{\mu}_{\vbeta}$, $\tilde{\Sigma}_{\vbeta}$, $\tilde{\mu}_{\vd}$, $\tilde{
 $\tilde{\mu}_{\vphi}$, $\tilde{\Sigma}_{\vphi}$, $\tilde{\vpi}_{\vxi}$ and $\tilde{\mu}_{\Sigma^{-1}},$
 %and $\tilde{\nu_{\Sigma}}$,
 and then updating their values according to the updating functions
-repeatedly until convergence. Details of the VB algorithm are provided in the supplementary material.
+repeatedly until convergence. Details are provided in the supplementary material.
 The joint posterior distribution can then be approximated by sampling $\vbeta \sim N(\tilde{\mu}_{\vbeta}, \tilde{\Sigma}_{\vbeta})$, $\vd \sim N(\tilde{\mu}_{\vd}, \tilde{\Sigma}_{\vd})$, $\vphi \sim N(\tilde{\mu}_{\vphi}, \tilde{\Sigma}_{\vphi})$, $\vxi_{pq}\sim Multinomial(1, \tilde{\vpi}_{\vxi,pq})$, and $\Sigma \sim InvWishart( \tilde{\Psi}_{\Sigma}, \tilde{\nu}_{\Sigma})$.
 
 The VB algorithm described above can be easily extended to consider the full multi-subject model. In
@@ -816,7 +815,7 @@ and therefore we do not need the terms $Q(\vmu_{\vd}\g)$ and $Q(\Sigma_{\vd}\g)$
 
 \section{\uppercase{Simulation study}}
 \label{sec:simulation}
-In this section we show the performance of our proposed {\color{Magenta}model} in two simulation studies.
+In this section we show the performance of our proposed model in two simulation studies.
 Model performance based on MCMC posterior inference is assessed in a first simulation
 study.  We then compare the MCMC and VB algorithms in a second simulation study.
 More specifically, Section \ref{sec:simulation:setting} describes the simulation settings used to generate the datasets
@@ -829,7 +828,7 @@ finally, Section \ref{sec:simulation:VB} compares the performance of the MCMC an
 \centering
    \begin{minipage}[]{0.48\textwidth}
       \centering
-\includegraphics[scale=.22]{./graph/simulation/simulated_network.pdf} \\
+\includegraphics[scale=.22]{./graph/simulation/network2.pdf} \\
      (a)
       \end{minipage}
 \begin{minipage}[]{0.48\textwidth}
@@ -837,20 +836,23 @@ finally, Section \ref{sec:simulation:VB} compares the performance of the MCMC an
 \includegraphics[scale=.24]{./graph/simulation/sim-hrfs.pdf} \\
      (b)
       \end{minipage}
-\caption[1]{(a) Simulated connectivity network; connectivities not shown in the graph are not present in any of the subjects. The numbers without parentheses represent the group-level connectivity strength under task condition; the numbers in parentheses represent the group-level connectivity strength under rest condition. (b) Simulated mean HRFs.}
+\caption[1]{(a) Simulated connectivity network; connectivities not shown in the graph are not present in any of the subjects. The numbers without 
+parentheses represent the group-level connectivity strengths under the task condition; the numbers in parentheses represent the group-level connectivity 
+strengths under the rest condition. (b) Simulated mean HRFs.}
 \label{sim-eff}
 \end{figure}
 
 \subsection{Simulation Settings}
 \label{sec:simulation:setting}
-We simulated 30 datasets of a single group of 30 subjects, 2 conditions, 5 ROIs, 3 independent sessions with 48 time points {\color{Magenta}in} each session,
+We simulated 30 datasets of a single group of 30 subjects, 2 conditions, 5 ROIs, 3 independent sessions with 48 time points in each session,
 and TR $=$ 2 seconds. Each dataset was independently generated according to the model
 described in the previous section with $L=1$.
 The BOLD amplitudes $\vbeta\s$, the connectivity parameters $\vphi\s$ and the HRF basis coefficients $\vd\s$ for each subject were generated independently using multivariate
-normal distributions. ROI 2 was simulated {\color{Magenta}as} not activated. The BOLD amplitudes for the two conditions in this ROI were {\color{Magenta}set to be} the same, and therefore had a low signal to noise ratio due to a {\color{Magenta}relatively} flat BOLD response shape. The connectivity
+normal distributions. ROI 2 was simulated as not activated. The BOLD amplitudes for the two conditions in this ROI were
+set to be the same, and therefore had a low signal to noise ratio due to a relatively flat BOLD response shape. The connectivity
 network and the connectivity strength implied by the group-level connectivity parameter $\vmu_{\vphi}\g$ are summarized in Figure \ref{sim-eff}(a).
 The connectivities that are not present in Figure \ref{sim-eff}(a) are set to be zero for all subjects, i.e., the presence/absence of each connectivity is the same across all subjects. The mean HRFs for the five ROIs
-are displayed in Figure \ref{sim-eff}(b). ROIs 3 and 4 {\color{Magenta}shared} the same HRF shapes.
+are displayed in Figure \ref{sim-eff}(b). ROIs 3 and 4 shared the same HRF shapes.
 $\Sigma\s$ was constrained to be the same across the subjects.
 The exact values of the simulation parameters
 are listed in the supplementary material.
@@ -882,17 +884,17 @@ Here we discuss the prior distributions for the group parameters used in the ana
 the simulated data.
 We set $\nu_{\Sigma}=P+1$, the smallest value that leads to a proper Inverse-Wishart distribution
 for $\Sigma^{(s)}.$
-We also set $\vmu_{\vd}^g = \vmu^*_{\vd}$, {\color{Magenta}and} $\Sigma_{\vd}^g = \Sigma^*_{\vd}$, with $\vmu^*_{\vd}$ and $\Sigma^*_{\vd}$
-obtained from the constrained linear basis {\color{Magenta}approach} as described in Section \ref{sec:method:constrainedHRF}.
+We also set $\vmu_{\vd}^g = \vmu^*_{\vd}$ and $\Sigma_{\vd}^g = \Sigma^*_{\vd}$, with $\vmu^*_{\vd}$ and $\Sigma^*_{\vd}$
+obtained from the constrained linear basis approach as described in Section \ref{sec:method:constrainedHRF}.
 The remaining priors are as follows: $\vmu_{\vbeta}^g \stackrel{ind}{\sim} N(\vzero_{3P},~ 750\cdot I_{3P})$,
 with the variance chosen to match the scale of the data, i.e.,
 the variance was set to be a little larger than the maximum of all $(\vmu_{\vbeta}^g)^2$;
 $\vmu_{\vphi}^g \stackrel{ind}{\sim} N(\vzero_{2LP^2},~ I_{2LP^2})$, as we do not expect
 $\vmu_{\vphi}^g$ to be much larger than 1; $\Sigma_{\vbeta}^g(i,i) \stackrel{ind}{\sim} InvGamma(1,1)$
-and $\Sigma_{\vphi}^g(i,i) \stackrel{ind}{\sim} InvGamma(1,1)${\color{Magenta}, so} that
+and $\Sigma_{\vphi}^g(i,i) \stackrel{ind}{\sim} InvGamma(1,1),$ so that
 $\Sigma_{\vbeta}^g(i,i)$ and $\Sigma_{\vphi}^g(i,i)$ are allowed to have large variability;
 $\vpi_{pq}^g \stackrel{ind}{\sim} Dir(0.1\cdot\vone_{L+1})$, so that $\vpi_{pq}^g$ has a relatively
-large variability but does not favor in any specific number of lags {\color{Magenta}$j\in \{0,1,..,L\}$}.
+large variability but does not favor in any specific number of lags $j\in \{0,1,\ldots,L\}$.
 The maximum number of lags allowed in the model was set to $L=1$.
 
 
@@ -904,13 +906,14 @@ No convergence problems were detected.
 \label{sec:simulation:results}
 \noindent \underline{Activation.} All the ROIs were correctly identified as activated or not activated for all 30
 datasets.
-The average bias in the group-level activation contrast $\mu_{\beta,p,(c)}$, was 0.48; {\color{Magenta}the relative} bias (i.e., the bias divided by the true value) was 2.9\% for activated regions {\color{Magenta}on average}, and specifically $[0.079, 0.041, 0.033, 0.044]\times100\%$ for ROIs 1, 3, 4, and 5. The coverage of the 95\% posterior CI for the contrast was 86.7\% on average,
+The average bias in the group-level activation contrast $\mu_{\beta,p,(c)}$, was 0.48; the relative
+bias (i.e., the bias divided by the true value) was 2.9\% for activated regions on average, and specifically $[0.079, 0.041, 0.033, 0.044]\times100\%$ for ROIs 1, 3, 4, and 5. The coverage of the 95\% posterior CI for the contrast was 86.7\% on average,
 and $[1.00, 1.00, 0.80, 0.67, 0.87]\times100\%$ for ROIs 1-5. While ROI 4 had a relatively low coverage,
-it also had a relatively small bias compared to {\color{Magenta}the }other ROIs, which suggests that the variability of the activation parameter
+it also had a relatively small bias compared to the other ROIs, which suggests that the variability of the activation parameter
 at this ROI could be underestimated.
 
 \noindent\underline{Connectivity.} At the subject level, the full connectivity network was correctly inferred
-for 96.7\% individuals across the datasets. Even for {\color{Magenta}the }connectivity from ROI 5 to ROI 3, which is
+for 96.7\% individuals across the datasets. Even for the connectivity from ROI 5 to ROI 3, which is
 non-zero for the task condition and zero for the rest condition,
 the presence of connectivity was also correctly inferred.
 The overall sensitivity for the presence of connectivity was 99.5\%, and the overall specificity was 100\%. These
@@ -935,7 +938,7 @@ captured in spite of this.
 Overall, our approach is able to correctly infer activation, connectivity and the HRF shapes. It also has relatively
 small biases and good coverages of the 95\% posterior CIs in general,
 except that the variation of the activation parameters
-{\color{Magenta}is slightly} underestimated for one of the ROIs, although the HRF for this ROI was appropriately estimated.
+is slightly underestimated for one of the ROIs, although the HRF for this ROI was appropriately estimated.
 Moreover, the connectivity results were found to be very robust to the choice of
 threshold for determining whether the connectivity is present or not at the subject level.
 
@@ -955,7 +958,7 @@ We applied both the VB and MCMC algorithms to the simulated fMRI data for each o
 posterior sample of size 5,000. No convergence problems were detected.
 
 The VB algorithm converged within 150 iterations for all subjects. The VB results are based on 5,000 samples from the approximate posterior.
-{\color{Magenta}The MCMC took 104 seconds while the VB algorithm took 2 seconds (for all subjects)}, with the same hardware used in the previous simulation study,
+The MCMC took 104 seconds while the VB algorithm took 2 seconds for all subjects, with the same hardware used in the previous simulation study,
 e.g., a Linux platform in a computer with 64 AMD64
 processors and 256G memory.
 
@@ -963,14 +966,14 @@ processors and 256G memory.
 The results in terms of bias, relative bias (``rbias''), 95\% CI coverage (``cover''), true positive rate (``tp'') and true negative rate (``tn'') are summarized in Table \ref{VBcompare}.
 $T_p$, $T_w$ and $T_u$ denote time to peak, FWHM, and time to post-stimulus undershoot (in seconds), respectively.
 Overall, VB provides a reasonable approximation to the joint posterior distribution.
-{\color{Magenta}However,} VB led to larger biases than MCMC for most of the parameters,
+However, VB led to larger biases than MCMC for most of the parameters,
 except for FWHM, $T_w$, and $T_u$ which show slighlty smaller biases.
  In terms of the 95\% CIs, VB seems to yield intervals with smaller
 coverage than MCMC. Also, for inferring whether a connectivity is present, or inferring whether a region is activated,
 VB
  seems to report more false positives (lower $\beta$.tn and $\phi$.tn compared to MCMC).
 
-{\color{Magenta}VB} approximations could greatly reduce the computation time at the cost of lower specificity and smaller coverage of the 95\% CIs. In cases where false positives are of less concern
+VB approximations could greatly reduce the computation time at the cost of lower specificity and smaller coverage of the 95\% CIs. In cases where false positives are of less concern
 and MCMC sampling is too slow for the problem at hand, such as fMRI datasets with a large
 number of ROIs and many subjects/treatments, the VB approximation provides a feasible and good
 alternative to the MCMC approach.
@@ -1000,7 +1003,7 @@ VB   & 0.191 & 0.0156 & 0.983 & 0.867 & 0.773 \\
   MCMC  & -0.010 & -0.0012 & 0.983 & 1.000 & 0.960  \\
      \hline
 \end{tabular}
-\caption{Comparison of results of VB and MCMC. }
+\caption{Comparison of VB and MCMC. }
 \label{VBcompare}
 \end{table}
 
@@ -1008,30 +1011,29 @@ VB   & 0.191 & 0.0156 & 0.983 & 0.867 & 0.773 \\
 \centering
 \begin{minipage}[]{0.31\textwidth}
       \centering
-\includegraphics[scale=.6]{./graph/simulation/hrf-1.pdf}
+\includegraphics[scale=.6]{./graph/simulation/res-hrf-1-new.pdf}
 \\(a) ROI 1
 \end{minipage}
 \begin{minipage}[]{0.31\textwidth}
       \centering
-\includegraphics[scale=.6]{./graph/simulation/hrf-2.pdf}
+\includegraphics[scale=.6]{./graph/simulation/res-hrf-2-new.pdf}
 \\(b) ROI 2
 \end{minipage}
 \begin{minipage}[]{0.31\textwidth}
       \centering
-\includegraphics[scale=.6]{./graph/simulation/hrf-3.pdf}
+\includegraphics[scale=.6]{./graph/simulation/res-hrf-3-new.pdf}
 \\(c) ROI 5
 \end{minipage}
-\caption[1]{Posterior HRF results for ROIs 1, 2, and 5 in a given subject. {\color{Magenta}Red curves are the true HRFs,
-black curves are the posterior median HRFs, gray curves are posterior samples of the
-HRFs, and blue curves are the bounds of the 95\% pointwise posterior credible bands.} }
+\caption[1]{Posterior HRF results for ROIs 1, 2, and 5 in a given subject. 
+The plots show the true HRFs (red), the posterior median HRFs (black), posterior
+samples of the HRFs (gray), and 95\% posterior bands (blue dotted lines).} 
 \label{res-hrf}
 \end{figure}	
 
 
 \section{\uppercase{Analysis for the stroke study}}
 \label{sec:analysis}
-We now consider the analysis of {\color{Magenta}the fMRI} dataset described in 
-{\color{Magenta}\ref{sec:intro:overview}}. Full MCMC analysis is feasible in this setting given the dimension of the dataset, so we do not consider approximate VB inference in this case.
+We now consider the analysis of the fMRI dataset described in Section 1.1. Full MCMC analysis is feasible in this setting given the dimension of the dataset, so we do not consider approximate VB inference in this case.
 \subsection{Analysis}
 We use $g = (healthy), ~ (stroke)$ to denote, respectively, the healthy group and the stroke group.
 The results below are based on a VAR structure with a maximum lag of $L=1.$
@@ -1040,12 +1042,12 @@ next subsection. Overall we found that a model with $L=1$ was appropriate for mo
 in this study.
 
 We used the same prior distributions used for the simulation study, with the exception of the prior
-for the {\color{Magenta}BOLD amplitudes}. This prior  was set to $\vmu_{\vbeta}^g \sim N(\vzero, 25\cdot I)$ so that the standard deviation is about the largest $\mu_{\beta_p}^g$
-obtained from the {\color{Magenta}preliminary analysis described in Section \ref{sec:method:hie-group}}.
+for the BOLD amplitudes. This prior  was set to $\vmu_{\vbeta}^g \sim N(\vzero, 25\cdot I)$ so that the standard deviation is about the largest $\mu_{\beta_p}^g$
+obtained from the preliminary analysis described in Section 3.2.
 In addition, in order to check the sensitivity of the results to the choice of prior distributions, the following
 alternative prior distributions were also considered. Sensitivity with respect to the choice of $\valpha_{\vpi}:$
 we considered two alternative prior settings with $~ \valpha_{\vpi} = [0.2, 0.1]$ and
-$~ \valpha_{\vpi} = [0.1, 0.2]$. The first one assumes that the presence probability of connectivity is most likely to
+$~ \valpha_{\vpi} = [0.1, 0.2]$. The first one assumes that the probability of connectivity is most likely 
 be around $\dfrac{2}{3}$, the second assumes that such probability is most likely to be around $\dfrac{1}{3}$, while the original prior, $\valpha_{\vpi}=[0.1,0.1]$, assumes the probability is equally likely to be $<0.5$ or $>0.5$.
 Sensitivity with respect to the priors on $\vmu_{\vbeta}^g$ and $\vmu_{\vphi}^g:$
 we considered two alternative sets of priors, namely (1) $\vmu_{\vbeta}^g \sim N(\vzero, 25\times25I_{3P})$,  $\vmu_{\vphi}^g \sim N(\vzero, 25 I_{2LP^2})$, and (2) $\vmu_{\vbeta}^g \sim N(\vzero, \frac{1}{4}\times25I_{3P})$, $~\vmu_{\vphi}^g \sim N(\vzero,\frac{1}{4}I_{2LP^2})$. The first set has a larger variability compared to the original set of priors and the second set has a smaller variability.
@@ -1054,7 +1056,7 @@ All of these priors led to very similar posterior results.
 In addition to studying the posterior distributions of the activation and connectivity parameters within each group, we
 also obtained posterior inference on the difference in the presence probabilities of connectivity from ROI $q$ to ROI
 $p$ for stroke and healthy subjects, i.e., $\vpi_{pq}^{(stroke)}(\ell) - \vpi_{pq}^{(healthy)}(\ell)$, and
-also on the difference in {\color{Magenta}the }connectivity strength,
+also on the difference in the connectivity strength,
 $\vmu^{(stroke)}_{\Phi_k(\ell), pq} - \vmu^{(healthy)}_{\Phi_k(\ell), pq}$, for $\ell=1$. The 95\% posterior
 CIs of these quantities were computed. If the 95\% posterior CI of the difference of a given quantity does
 not include 0, then we say that there is
@@ -1069,35 +1071,37 @@ processors and 256G memory. The total computation time was 50 min.
 
 \noindent\underline{Activation.}
 We found that all the ROIs were activated in response to the task condition for the stroke patients, and all the ROIs were
-activated for the healthy subjects except for RM1 (see Figures \ref{res-act}(a) and (b)). In both groups, LM1, which is primarily
+activated for the healthy subjects except for RM1 (see Figures \ref{res-act} (a) and (b)). In both groups, LM1, which is primarily
 responsible for the motor function of the right side of the body, was found to be highly activated.
 A formal comparison of the activations between the
-groups is shown in Figure \ref{res-act}(c). Red indicates a positive difference. {\color{Magenta}The black outline of the circle indicates that the corresponding 95\% posterior CI does not include zero.} The plot shows there is sufficient
+groups is shown in Figure \ref{res-act}(c). Red indicates a positive difference. 
+The black outline of the circle indicates that the corresponding 95\% posterior CI does not include zero.
+The plot shows there is sufficient
 evidence that the stroke group is more activated than the healthy group in RPMd, RM1 and SMA.
-This {\color{Magenta}suggests} a {\color{Magenta}possible} compensatory effect that requires M1 from the unaffected brain hemisphere and secondary motor
+This suggests a possible compensatory effect that requires M1 from the unaffected brain hemisphere and secondary motor
 regions to aid in executing the motor task.
 
 \begin{figure}
 \centering
 \begin{minipage}[]{0.32\textwidth}
       \centering
-\includegraphics[scale=.23]{./graph/realdata/healthy_activity_group}\\
+\includegraphics[scale=.23]{./graph/realdata/hie_bvar_hrfbasis_healthydom_std_825-keepd-ch-a01_burn20000_chain5000-activity_group}\\
 (a) Healthy
 \end{minipage}
 \begin{minipage}[]{0.32\textwidth}
       \centering
-\includegraphics[scale=.23]{./graph/realdata/stroke_activity_group}\\
+\includegraphics[scale=.23]{./graph/realdata/hie_bvar_hrfbasis_datos_right_std_825-keepd-ch-a01_burn20000_chain5000-activity_group}\\
 (b) Stroke
 \end{minipage}
 \begin{minipage}[]{0.32\textwidth}
       \centering
-\includegraphics[scale=.23]{./graph/realdata/activation-stroke-healthy.pdf}\\
+\includegraphics[scale=.23]{./graph/realdata/act-stroke-healthy-updated.pdf}\\
 (c) Stroke - Healthy
 \end{minipage}
 \singlespace
 \caption[1]{Activation strength for the two groups and activation difference between the groups. Darker color
 indicates higher activation (or activation difference). Red indicates a positive value, and white represents zero.
-{\color{Magenta}The black outline of} the circle indicates that the corresponding 95\% posterior CI does not include zero.
+The black outline of the circle indicates that the corresponding 95\% posterior CI does not include zero.
 The rectangular frame indicates the ROIs in the hemisphere corresponding to the moving hand. }
 \label{res-act}
 \end{figure}
@@ -1106,17 +1110,17 @@ The rectangular frame indicates the ROIs in the hemisphere corresponding to the 
 \centering
 \begin{minipage}[]{0.32\textwidth}
       \centering
-\includegraphics[scale=.20]{./graph/realdata/network-healthy-pi}\\
+\includegraphics[scale=.20]{./graph/realdata/network-healthy-pi-ppt}\\
 (a) Healthy
 \end{minipage}
 \begin{minipage}[]{0.32\textwidth}
       \centering
-\includegraphics[scale=.20]{./graph/realdata/network-stroke-pi}\\
+\includegraphics[scale=.20]{./graph/realdata/network-stroke-pi-ppt}\\
 (b) Stroke
 \end{minipage}
 \begin{minipage}[]{0.32\textwidth}
       \centering
-\includegraphics[scale=.20]{./graph/realdata/network-stroke-healthy-pi}\\
+\includegraphics[scale=.20]{./graph/realdata/network-stroke-healthy-pi-ppt}\\
 (c) Stroke - Healthy
 \end{minipage}
 \singlespace
@@ -1136,10 +1140,11 @@ to be present in the stroke group; only those differences whose 95\% posterior C
 
 
 \noindent\underline{Connectivity.} Plots \ref{res-network-pi}(a) and (b) list all the connectivities that are present
-in at least one subject for each group, and describe how likely the presence of connectivity {\color{Magenta}is} in each group {\color{Magenta}through} the thickness of the arrow. Connectivity from LM1 to LPMd in healthy participants has the highest presence
+in at least one subject for each group, and describe how likely the presence of connectivity is in each group through
+of the thickness of the arrow. Connectivity from LM1 to LPMd in healthy participants has the highest presence
 probability, around 1.00. Connectivity from RPMd to RM1 in stroke patients has the lowest presence probability,
 around 0.08, apart from the connectivities that are not listed. The solid arrows represent those connectivities that
-are predominant {\color{Magenta}in the group}, i.e., those for which the presence probability exceeds 0.5, or $\vpi_{pq}^g(1)|Y >0.5$,
+are predominant in the group, i.e., those for which the presence probability exceeds 0.5, or $\vpi_{pq}^g(1)|Y >0.5$,
 while the dashed
 arrows correspond to connectivities that exist at least in one subject in the group (i.e.,
 $\Pr(\xi_{pq}\s(1)=1|Y)> 0.5$ for at least one $s$), but are not predominant in the group (i.e.,
@@ -1153,25 +1158,27 @@ and all start from LM1.  However,
 in the stroke group, the predominant connectivities are all intraregional.
 
 
-Figure \ref{res-network-pi}(c) lists all the differences in connectivity presence {\color{Magenta}probabilities} between the two groups
-($\vpi_{pq}^{(stroke)}(1) - \vpi_{pq}^{(healthy)}(1)$) whose 95\% posterior CI does not include 0. The red connectivities are more likely in the stroke group than the healthy group, while the blue connectivities are more likely in the healthy group than the stroke group. For the stroke group, there are {\color{Magenta}higher probabilities for connectivity} from secondary motor regions (LPMd, SMA) to themselves or to
-other regions; while for the healthy group, there are {\color{Magenta}higher probabilities for connectivity starting} from LM1, the region
+Figure \ref{res-network-pi}(c) lists all the differences in connectivity presence probabilities between the two groups
+($\vpi_{pq}^{(stroke)}(1) - \vpi_{pq}^{(healthy)}(1)$) whose 95\% posterior CI does not include 0. 
+The red connectivities are more likely in the stroke group than the healthy group, while the blue connectivities are more likely in the healthy group than the stroke group. For the stroke group, there are higher probabilities for connectivity from secondary motor regions (LPMd, SMA) to themselves or to
+other regions; while for the healthy group, there are higher probabilities for connectivity starting from LM1, the region
 primarily responsible for the right hand movement, to other regions.
 
-We also calculated the posterior samples of the difference in {\color{Magenta}the} connectivity strength between the {\color{Magenta}two} groups,
-$\vmu^{(stroke)}_{\Phi_k(1), pq} - \vmu^{(healthy)}_{\Phi_k(1), pq}${\color{Magenta}, for all $p,q$}. However, all of the 95\% posterior CIs of {\color{Magenta}those differences} in connectivity strength {\color{Magenta}contain} $0$; i.e., there is not sufficient evidence for differences in the strength of connectivities across different groups.
+We also calculated the posterior samples of the differences in the connectivity strength between the two groups,
+$\vmu^{(stroke)}_{\Phi_k(1), pq} - \vmu^{(healthy)}_{\Phi_k(1), pq},$ for all $p,q$. However, all of the 95\% posterior CIs of those
+differences in connectivity strength contain $0$; i.e., there is not sufficient evidence for differences in the strength of connectivities across different groups.
 
 
-\noindent\underline{HRFs.} The estimated HRF (pointwise posterior median)
-for each region and subject is shown in Figure \ref{res-hrfsind-byroi}. There are no
+\noindent\underline{HRFs.} The estimated HRFs (pointwise posterior median)
+for all the regions and subjects are shown in Figure \ref{res-hrfsind-byroi}. There are no
 obvious differences between the two groups, except that in general there seems to be more interindividual
 variability in the subject-specific HRFs from the stroke group.
 
 \begin{figure}
 \centering
-\includegraphics[scale=.37]{./graph/realdata/all_subjects_hrf_group}
+\includegraphics[scale=.37]{./graph/realdata/hie_bvar_hrfbasis_datos_right_std_825-keepd-ch-a01_vs_healthy_indHRFs_by_roi-oneline}
 \caption[1]{Estimated
-HRF (pointwise posterior median) for each ROI and subject for the two groups. The vertical dashed line is at 5 sec and the horizontal dashed line is at the baseline value. The black curve is the median HRF of the corresponding group.}
+HRFs (pointwise posterior median) for each ROI and subject for the two groups. The vertical dashed line is at 5 seconds, and the horizontal dashed line is at the baseline value. The black curve is the median HRF of the corresponding group.}
 \label{res-hrfsind-byroi}
 \end{figure}
 
@@ -1183,29 +1190,32 @@ we obtained posterior samples of $\vy\ssr(t)$ by calculating $(\vy\ssr(t))^{(m)}
 posterior estimate, ${\hat{\vy}}\ssr(t),$ by taking the median of
 the posterior samples $\left\{(\vy\ssr(t))^{(m)}\right\}_{m=1}^M$.
 Similarly, we obtained posterior samples of $\veps\sr(t)$ by calculating
-$(\veps\sr(t))^{(m)}= (\vu\sr(t))^{(m)} - (\vPhi\sst(1,t))^{(m)}({\color{Magenta}\vu}\sr(t-1))^{(m)}$, where $(\vPhi\sst(1,t))^{(m)}=c_1(t-1)(\vPhi_1\sst(1))^{(m)}+c_2(t-1)(\vPhi_2\sst(1))^{(m)}$, $(\vu\s(t))^{(m)} = \vy\sr(t) - ({\vy}\ssr(t))^{(m)}$, and calculated $\hat{\veps}\sr(t)$ as the {\color{Magenta}empirical posterior} median.
+$(\veps\sr(t))^{(m)}= (\vu\sr(t))^{(m)} - (\vPhi\sst(1,t))^{(m)}(\vu\sr(t-1))^{(m)}$, where $(\vPhi\sst(1,t))^{(m)}=c_1(t-1)(\vPhi_1\sst(1))^{(m)}+c_2(t-1)(\vPhi_2\sst(1))^{(m)}$, $(\vu\s(t))^{(m)} = \vy\sr(t) - ({\vy}\ssr(t))^{(m)}$, and calculated $\hat{\veps}\sr(t)$ as the empirical posterior median.
 We inspected the time series plot of $\hat{\veps}\sr(t)$ for each ROI, and did not find any obvious temporal patterns in most
-of these time series plots. In addition, PACF {\color{Magenta}plots indicated} that $L=1$ was sufficient for most subjects,
+of these time series plots. In addition, PACF plots indicated that $L=1$ was sufficient for most subjects,
 sessions and regions, but some of these plots suggest that a model with $L=2$ may be required for a small
 number of subjects. Finally, plots of ${\hat{\vy}}\ssr(t)$ also
-{\color{Magenta}showed} that the group model {\color{Magenta}captured} the mean trend of the data, especially for the ROIs that have relatively strong activations
+showed that the group model captured the mean trend of the data, especially for the ROIs that have relatively strong activations
 (e.g., LM1).
 Figure \ref{res-fit} in the Appendix shows examples of time series plots of ${\hat{y}}^{*(s,r)}(t)$ and
 $\hat{\epsilon}^{(s,r)}(t),$ and the PACF plots of $\hat{\epsilon}^{(s,r)}(t),$ for LM1 and two subjects,
 one healthy and the other one a stroke patient.
 
-\subsection{{\color{Magenta}Conclusions} of the Analysis}
-Using our model, we obtained interesting results about the relative activation patterns in stroke patients compared to {\color{Magenta}healthy controls}. First, as expected, we found that there was strong activation within LM1 for both the stroke and {\color{Magenta}healthy} groups. This is consistent with the fact that LM1 is primarily responsible for motor function of the right hand. All the ROIs were activated in response to the task condition (see Figure \ref{res-act}(a)) for the stroke patients; and all the ROIs were activated for healthy subjects except for RM1 (see Figure \ref{res-act}(b)), which is primarily responsible for the motor function of the left side of the body.
+\subsection{Conclusions of the Analysis}
+Using our model, we obtained interesting results about the relative activation patterns in stroke patients compared to healthy controls. First, as expected, we found that there was strong activation within LM1 for both the stroke and healthy groups. This is consistent with the fact that LM1 is primarily responsible for motor function of the right hand. All the ROIs were activated in response to the task condition (see Figure \ref{res-act}(a)) for the stroke patients; and all the ROIs were activated for healthy subjects except for RM1 (see Figure \ref{res-act}(b)), which is primarily responsible for the motor function of the left side of the body.
 
-Activation of secondary motor areas in healthy controls initially seemed counterintuitive. However, the control subjects were age matched to the stroke group and, therefore, were of 50+ years of age. It is established that these regions are involved in the control of unilateral movement \citep{Beaule2012} and with aging we see increasing involvement of {\color{Magenta} }secondary brain regions to support simple motor movements \citep{Ward2003}.
+Activation of secondary motor areas in healthy controls initially seemed counterintuitive. However, the control subjects were age matched to the stroke group and, therefore, were of 50+ years of age. It is established that these regions are involved in the control of unilateral movement \citep{Beaule2012} and with aging we see increasing involvement of secondary brain regions to support simple motor movements \citep{Ward2003}.
 
-Second, we found greater activation strength in the {\color{Magenta}three} motor regions, namely, SMA, RM1 and RPMd for stroke patients compared to healthy controls.
+Second, we found greater activation strength in the three motor regions, namely, SMA, RM1 and RPMd for stroke patients compared to healthy controls.
 The literature confirms this finding. After stroke, such secondary motor regions are routinely more activated to support execution of post-stroke movements, particularly in more impaired patients \citep{Ward2003b}.
 
-The connectivity modeling produced some unexpected results. {\color{Magenta}We found less inter-regional connectivities in the stroke group compared to the healthy group.} After stroke, fMRI connectivity studies show that there are excitatory and inhibitory connections between primary motor cortex in the stroke-affected hemisphere and secondary motor regions within the affected and unaffected hemispheres \citep{Rehme2013}. Therefore, Figure \ref{res-network-pi}(b), showing a lack of connectivity between LM1 and other regions like RM1 and RPMd in stroke patients
-is surprising. {\color{Magenta} However, stroke is a highly heterogeneous disorder and perhaps in the stroke group there was sufficient noise and variation across the patients leaving the current statistical approach unable to detect predominant between-region connections.} 
+The connectivity modeling produced some unexpected results. We found less inter-regional connectivities in the stroke group compared to the healthy group. After stroke, fMRI connectivity studies show that there are excitatory and inhibitory connections between primary motor cortex in the stroke-affected hemisphere and secondary motor regions within the affected and unaffected hemispheres \citep{Rehme2013}. Therefore, Figure \ref{res-network-pi}(b), showing a lack of connectivity between LM1 and other regions like RM1 and RPMd in stroke patients
+is surprising.
+However, stroke is a highly heterogeneous disorder and perhaps in the stroke group there was sufficient noise and variation across the patients, 
+leaving the current statistical approach unable to detect predominant between-region connections. 
 
-{\color{Magenta}We also found more intra-regional connectivities in the stroke group compared to the healthy group.} To our knowledge, there is a dearth of literature describing how activity within a region predicts subsequent activation in the {\color{Magenta}same} region. A recent study from our group did identify that this intraregional activation prediction is present for LM1, LPMd, SMA, and RPMd \citep{Gorrostieta2013}, largely confirming what we observed in the current analyses. Together the data suggest possible positive feedforward connectivity in these regions. {\color{Magenta} }Furthermore, the greater likelihood of the connectivity being present in stroke patients versus healthy controls may lend support for these areas being more important to guiding and coordinating movement after stroke.
+We also found more intra-regional connectivities in the stroke group compared to the healthy group. To our knowledge, there is a dearth of literature 
+describing how activity within a region predicts subsequent activation in the same region. A recent study from our group did identify that this intraregional activation prediction is present for LM1, LPMd, SMA, and RPMd \citep{Gorrostieta2013}, largely confirming what we observed in the current analyses. Together the data suggest possible positive feedforward connectivity in these regions.Furthermore, the greater likelihood of the connectivity being present in stroke patients versus healthy controls may lend support for these areas being more important to guiding and coordinating movement after stroke.
 
 
 In healthy control subjects, our model identified probable connections from LM1 to the secondary motor regions. Although the exact neurobiological underpinnings of the connectivity cannot be determined from these analyses, considering the older age of the control group, the predominant connection from LM1 to LPMd is perhaps suggestive of recruitment of a secondary motor area in the hemisphere responsible for movement of the right hand.
@@ -1213,7 +1223,7 @@ In healthy control subjects, our model identified probable connections from LM1 
 The activation and connectivity patterns specific to stroke patients that have been found in this analysis may be linked to compensatory effects that are related to post-stroke recovery. These findings may help neuroscientists in the design of future studies that can lead to a deeper understanding of the association between neurophysiology (activation and connectivity) and the degree of post-stroke recovery and therefore to a proper evaluation of the effect of a particular treatment.
 
 
-{\color{Magenta}\section{\uppercase{Discussion}}}
+\section{\uppercase{Discussion}}
 \label{sec:conclusion}
 
 Our approach presents several advantages with respect to currently available methods: (1) it is able to simultaneously
@@ -1223,13 +1233,20 @@ to increase power for group comparison; this is particularly relevant for data w
 (4) it is able to easily incorporate relevant information derived from other studies but, unlike the dynamic causal
 modeling approach, it does not rely on biological assumptions that are difficult to verify from the data.
 
-{\color{Magenta}We also compared the performance of MCMC and VB algorithms for our model through a simple simulation study. Compared to MCMC, VB provides a reasonable approximation to the joint posterior distribution with a much lower computational cost. This becomes particularly important when dealing with fMRI datasets with a large number of ROIs and many subjects/treatments. However, it also brings higher bias and more false positives for inferring activation and connectivity. These side effects may be caused by the approximation to the joint posterior distribution. The approximation ignores the dependency between certain variables, however, there might be strong dependency between some variables, such as the connectivities that share the same node(s).}
+We also compared the performance of the MCMC and VB algorithms for posterior and approximate posterior inference
+through a simple simulation study. Compared to MCMC, VB provides a reasonable approximation to the joint posterior
+distribution at a much lower computational cost. This is particularly important when dealing with fMRI datasets 
+that contain data from a large number of ROIs and many subjects/treatments. We note that the reduction in computational cost 
+obtained with the VB algorithm comes with an increase in bias and false positives for inferring activation and connectivity.
+This is probably due to fact that the VB approximation ignores the dependencies between certain parameters, such as the
+dependencies between 
+connectivities that share the same node(s).
 
 As a note of caution, the inference on connectivity patterns obtained using our approach is at the hemodynamic level instead of
 the neuronal level, i.e., connectivity from ROI $q$ to ROI $p$ here means there is an association between the current hemodynamic
-activity in ROI $q$ {\color{Magenta}and} the future hemodynamic activity in ROI $p$. This type of connectivity is more difficult to interpret compared to neuronal-level connectivity mainly due to two limitations. One limitation is that the information transmission happening between the neurons is much faster than the fMRI sampling frequency, and spurious connectivity may be captured by VAR models due to downsampling. This type of behavior is illustrated in Fig.7 in \cite{Valdes2011}. 
-{\color{Magenta}%\st{of further studies for measuring the degree}
-One solution} is to use vector autoregressive moving average models (VARMA) which are more robust to this issue, however, they are more computationally challenging than VAR models. The second limitation is that the sparsity of the neuronal-level connectivity may be distorted when transferred to the hemodynamic level through convolution \citep{Valdes2011, SmithBandettini2012}.
+activity in ROI $q$ and the future hemodynamic activity in ROI $p$. This type of connectivity is more difficult to interpret compared to neuronal-level connectivity mainly due to two limitations. One limitation is that the information transmission happening between the neurons is much faster than the fMRI sampling frequency, and spurious connectivity may be captured by VAR models due to downsampling. This type of behavior is illustrated in Fig.7 in \cite{Valdes2011}.
+of further studies for measuring the degree. 
+One solution is to use vector autoregressive moving average models (VARMA) which are more robust to this issue, however, they are more computationally challenging than VAR models. The second limitation is that the sparsity of the neuronal-level connectivity may be distorted when transferred to the hemodynamic level through convolution \citep{Valdes2011, SmithBandettini2012}.
 According to \citet{Penny2005}, a solution to this limitation
 is to model the neuronal dynamics through a state space model. In a state space model, the fMRI signals are treated as the observed variables and the neuronal dynamics as the hidden states. Neuronal-level connectivity is thus modeled via the hidden states. Approximate posterior inference
 for this type of model can also be obtained efficiently by variational Bayes algorithms
@@ -1249,6 +1266,9 @@ help increase the power of detecting the differences between groups since we can
 The current approach also assumes that the activation strength is the same across sessions; in future studies we will
 extend our model to take into account the variation in the activation strength among different sessions.
 
+\section{\uppercase{Acknowledgements}}
+Dr. Cramer's work was supported in part by the National Institutes of Health award NIH-NICHD, K24 HD074722. Dr. Prado's work was partially
+supported by the National Science Foundation awards SES-1461497 and DMS-1407838. Dr. Ombao's work was supported in part by National Science Foundation awards SES-1461534, DMS-1238351 and DMS-1509023.
 \section{\uppercase{Supplementary material}}
 \label{sec:sup}
 \begin{description}
@@ -1268,7 +1288,7 @@ extend our model to take into account the variation in the activation strength a
 \end{minipage}
 \begin{minipage}[]{0.45\textwidth}
       \centering
-\includegraphics[scale=.24]{./graph/illustration/simulated_hrfsample.pdf}\\
+\includegraphics[scale=.24]{./graph/illustration/hrfsample.pdf}\\
 (b)
 \end{minipage}
 \caption[1]{(a) Half-cosine parameterization of the HRF. (b) Simulated HRFs.}
@@ -1289,7 +1309,7 @@ extend our model to take into account the variation in the activation strength a
 \end{minipage}
 \begin{minipage}[]{0.32\textwidth}
       \centering
-\includegraphics[scale=.21]{./graph/illustration/pca_generated_hrfsamples.pdf}\\
+\includegraphics[scale=.21]{./graph/illustration/hrfsamples.pdf}\\
 (c)
 \end{minipage}
 \caption[1]{(a) Variability explained by the basis vectors; (b) HRF basis set; (c) HRFs generated by the constrained linear basis. }
@@ -1334,18 +1354,12 @@ for LM1 of a healthy subject, and the second row is for LM1 of a stroke patient.
 \label{res-fit}
 \end{figure}
 
-\section*{\uppercase{Acknowledgment}}
-{\color{Magenta}The work of Hernando Ombao was supported in 
-part by grants from the NSF Division of Mathematical 
-Sciences and NSF Division of the Social and Economic 
-Sciences. The work of Dr. Cramer was supported by K24 HD074722.} 
-
 
 \singlespacing
 \bibliographystyle{ECA_jasa}
-\bibliography{refList-enar}
+\bibliography{refList-enar-blind}
 
-\input{Hierarchical-BVAR-HRF-trim_Raquel-supplementary.tex}
+\input{Hierarchical-BVAR-HRF-trim_Raquel-supplementary-blind.tex}
 
 \end{document}
 
