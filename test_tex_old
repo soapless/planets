@@ -438,7 +438,7 @@ of ROI $q$ in this relationship suggests the interpretation of $\Phi\sst(\ell,t)
 We use a Bayesian variable selection approach \citep{mitchellbeauchamp,georgemcculloch,ishwaranrao}
 to determine which elements of $\Phi_k\sst(\ell)$
 are different from zero, and therefore infer the connectivity network across ROIs. More
-specifically, we impose a ``spike and slab'' structure on $\Phi_k\sst(l)$ given by
+specifically, we impose a ``spike and slab'' structure on $\Phi_k\sst(\ell)$ given by
 \begin{eqnarray}
 \label{phistar}
 \Phi_k\sst(\ell)_{pq} &=& \Phi_k\s(\ell)_{pq} \vxi_{pq}\s(\ell),~~\text{with}~
@@ -1042,7 +1042,7 @@ next subsection. Overall we found that a model with $L=1$ was appropriate for mo
 in this study.
 
 We used the same prior distributions used for the simulation study, with the exception of the prior
-for the BOLD amplitudes. This prior  was set to $\vmu_{\vbeta}^g \sim N(\vzero, 25\cdot I)$ so that the standard deviation is about the largest $\mu_{\beta_p}^g$
+for the BOLD amplitudes. This prior was set to $\vmu_{\vbeta}^g \sim N(\vzero, 25\cdot I)$ so that the standard deviation is about the largest $\mu_{\beta_p}^g$
 obtained from the preliminary analysis described in Section 3.2.
 In addition, in order to check the sensitivity of the results to the choice of prior distributions, the following
 alternative prior distributions were also considered. Sensitivity with respect to the choice of $\valpha_{\vpi}:$
@@ -1245,7 +1245,6 @@ connectivities that share the same node(s).
 As a note of caution, the inference on connectivity patterns obtained using our approach is at the hemodynamic level instead of
 the neuronal level, i.e., connectivity from ROI $q$ to ROI $p$ here means there is an association between the current hemodynamic
 activity in ROI $q$ and the future hemodynamic activity in ROI $p$. This type of connectivity is more difficult to interpret compared to neuronal-level connectivity mainly due to two limitations. One limitation is that the information transmission happening between the neurons is much faster than the fMRI sampling frequency, and spurious connectivity may be captured by VAR models due to downsampling. This type of behavior is illustrated in Fig.7 in \cite{Valdes2011}.
-of further studies for measuring the degree. 
 One solution is to use vector autoregressive moving average models (VARMA) which are more robust to this issue, however, they are more computationally challenging than VAR models. The second limitation is that the sparsity of the neuronal-level connectivity may be distorted when transferred to the hemodynamic level through convolution \citep{Valdes2011, SmithBandettini2012}.
 According to \citet{Penny2005}, a solution to this limitation
 is to model the neuronal dynamics through a state space model. In a state space model, the fMRI signals are treated as the observed variables and the neuronal dynamics as the hidden states. Neuronal-level connectivity is thus modeled via the hidden states. Approximate posterior inference
