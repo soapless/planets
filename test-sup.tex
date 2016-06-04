@@ -1,71 +1,258 @@
+\documentclass[12pt,titlepage,fleqn]{article}
+\usepackage{setspace}
+
+
+
+%%%%%%enar format%%%%%%
+%\usepackage[margin=1in]{geometry}
+%%%%%%enar format%%%%%%
+
+\doublespacing
+%\renewcommand{\baselinestretch}{1.5}
+%%%%jasa format%%%%%%%%
+%\renewcommand{\baselinestretch}{2}
+%%%%jasa format%%%%%%%%
+
+
+%%%%jasa format%%%%%%%%
+ \setlength{\paperwidth}{8.5in}
+ \setlength{\textwidth}{6.5in}
+ \setlength{\oddsidemargin}{0in}
+ \setlength{\evensidemargin}{0in}
+%%%%jasa format%%%%%%%%
+
+
+%\textwidth=6.75in \oddsidemargin=-.25in \evensidemargin=-.25in
+%\topmargin=-.25in\textheight=9.25in
+
+%\renewcommand{\baselinestretch}{1.8}
+
+\usepackage{xr-hyper}
+\externaldocument{main-Hierarchical-BVAR-HRF-blind}
+
+\usepackage{url}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{latexsym}
+%\usepackage[dvips]{graphicx,color}
+\usepackage{graphicx,color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{bm}
+\usepackage{bbm,amssymb,epsfig}
+%\usepackage{wrapfig}
+\usepackage{subfig,subfloat}
+\usepackage{float}
+\usepackage{enumitem}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\usepackage{hyperref}
+%\usepackage{cite}
+\usepackage[round]{natbib}
+
+\usepackage{lipsum}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%\renewcommand{\thesection}{\arabic{section}.}
+
+\def\thesection{\arabic{section}.}
+\def\thesubsection{\arabic{section}.\arabic{subsection}}
+\def\thesubsubsection{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+
+\newcommand{\Var}{\mbox{Var}}
+\newcommand{\var}{\mbox{Var}}
+\newcommand{\rel}{\mbox{Rel}}
+\newcommand{\Cor}{\mathop{\rm {\mathbb C}or}\nolimits}%
+\newcommand{\cor}{\mathop{\rm {\mathbb C}or}\nolimits}%
+\newcommand{\Corr}{\mathop{\rm {\mathbb C}or}\nolimits}%
+\newcommand{\corr}{\mathop{\rm {\mathbb C}or}\nolimits}%
+\newcommand{\Cov}{\mathop{\rm {\mathbb C}ov}\nolimits}%
+\newcommand{\cov}{\mathop{\rm {\mathbb C}ov}\nolimits}%
+\newcommand{\ex}{{\mathbb E}}
+\newcommand{\E}{{\mathbb E}}
+\renewcommand\Re{\operatorname{Re}}
+\renewcommand\Im{\operatorname{Im}}
+\newcommand{\1}{{\bm 1}}
+\newcommand{\bfZ}{{\mathbf Z}}
+\newcommand{\bfU}{{\mathbf U}}
+
+\DeclareMathAlphabet      {\mathbi}{OML}{cmm}{b}{it}
+
+\newcommand{\vY}{\mathbi Y}
+\newcommand{\vy}{\mathbi y}
+\newcommand{\vU}{\mathbi U}
+\newcommand{\vu}{\mathbi u}
+\newcommand{\vM}{\mathbi M}
+\newcommand{\vZ}{\mathbi Z}
+\newcommand{\vX}{\mathbi X}
+\newcommand{\vx}{\mathbi x}
+\newcommand{\vw}{\mathbi w}
+\newcommand{\vh}{\mathbi h}
+\newcommand{\vH}{\mathbi H}
+\newcommand{\vc}{\mathbi c}
+\newcommand{\vb}{\mathbi b}
+\newcommand{\vB}{\mathbi B}
+\newcommand{\vd}{\mathbi d}
+\newcommand{\vhrf}{\mathbi{ hrf}}
+\newcommand{\vzero}{\mathbf{0}}
+\newcommand{\vone}{\mathbf{1}}
+\newcommand{\vi}{\mathbi i}
+
+\newcommand{\valpha}{\boldsymbol \alpha}
+\newcommand{\vbeta}{\boldsymbol \beta}
+\newcommand{\veps}{\boldsymbol \epsilon}
+\newcommand{\vPhi}{\boldsymbol \Phi}
+\newcommand{\vphi}{\boldsymbol \phi}
+\newcommand{\vxi}{\boldsymbol \xi}
+\newcommand{\vell}{\boldsymbol \ell}
+\newcommand{\vtheta}{\boldsymbol \theta}
+\newcommand{\vTheta}{\boldsymbol \Theta}
+\newcommand{\vmu}{\boldsymbol{\mu}}
+\newcommand{\vpi}{\boldsymbol{\pi}}
+\newcommand{\vecn}{\mbox{\rm vec}}
+
+
+\newcommand{\ii}{^{(i)}}
+\newcommand{\gi}{^{(g_i)}}
+\newcommand{\g}{^{(g)}}
+\newcommand{\gs}{^{g_s}}
+\newcommand{\pqk}{_{(pq),k}}
+\newcommand{\pq}{_{pq}}
+\newcommand{\pqz}{_{0,(pq)}}
+\newcommand{\pp}{_{pp}}
+%\newcommand{\T}{^{\text{T}}}
+\newcommand{\T}{'}
+\newcommand{\s}{^{(s)}}
+\newcommand{\sst}{^{*(s)}}
+\newcommand{\sr}{^{(s,r)}}
+\newcommand{\ssr}{^{*(s,r)}}
+\newcommand{\lik}{\mathcal{L}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\half}{\frac{1}{2}}
+
+
+% vectors/matices in bold
+\newcommand{\bmf}{{\bm f}}
+\newcommand{\bmm}{{\bm m}}
+\newcommand{\bA}{{\bm A}}
+\newcommand{\bC}{{\bm C}}
+\newcommand{\bD}{{\bm D}}
+\newcommand{\bI}{{\bm I}}
+\newcommand{\bId}{\bm{Id}}
+\newcommand{\bM}{{\bm M}}
+\newcommand{\bX}{{\bm X}}
+\newcommand{\bY}{{\bm Y}}
+\newcommand{\bZ}{{\bm Z}}
+\newcommand{\bSigma}{{\bf \Sigma}}
+\newcommand{\bk}{{{\bf k}}}
+\newcommand{\bepsilon}{{\bf \epsilon}}
+\newcommand{\IR}{\rm I\hspace*{-0.8mm} R}
+% Cal letters
+\newcommand{\cK}{{\cal K}}
+
+% Propositions, theorems, etc
+\newtheorem{prop}{Proposition}[section]
+
+\definecolor{blue}{rgb}{0.0, 0.0, 0.0}
+\definecolor{violet}{rgb}{0.0, 0.0, 0.0}
+\definecolor{green}{rgb}{0.0, 0.0, 0.0}
+\definecolor{red}{rgb}{0.0, 0.0, 0.0}
+%\definecolor{yellow}{rgb}{0.0, 0.0, 0.0}
+
+\begin{document}
+
+
 \doublespace
-\newpage
+%\newpage
 %%%%%%original format %%%%%%%%
 %\date{}
 \section*{\uppercase{Supplementary Document}}
 \setcounter{page}{1}
 \setcounter{figure}{0}
+\renewcommand{\theequation}{A\arabic{equation}}
+\setcounter{equation}{0}  % reset counter 
+
 {\large For: Understanding the Impact of Stroke on Brain Motor Function: A Hierarchical Bayesian Approach}\\
-Author: Zhe Yu, Raquel Prado, Erin Burke Quinlan, Steven C. Cramer, and Hernando Ombao \\
+% Author: Zhe Yu, Raquel Prado, Erin B. Quinlan, Steven C. Cramer, and Hernando Ombao \\
 Date: \today
 %\date{}
+
+% {\ebf Zhe, please make the following changes: 
+% \begin{itemize}
+% %\item Write everything in terms of inverse-Gamma and inverse-Wishart for consistency and to avoid having to define $\Omega^{(s)}$ and all the remaining $\Omega$s.
+% % \item You don't need to number the equations, unless they are being referred to in the text.
+% \item Reduce the length by combining a few equations in one line whenever possible. 
+% \item Finally, carefully check all the notation, indexes, algorithms, etc a few times to make sure all is correct and the notation is clear and appropriately defined.
+% \end{itemize}
+% }
+
 \subsection*{Full Conditional Posterior Distributions}
-Define notation $v(i_1:i_2)$ to be the subset of vector $v$ from elements $i_1$ to $i_2$. Subscript ``$post$'' is used to indicate the quantity is based on posterior distribution. Without loss of {\color{blue}generality}, we only need to list the posterior distributions for a single group. For notational convenience, we drop all the superscripts for group. 
+% Define notation $v(i_1:i_2)$ to be the subset of vector $v$ from elements $i_1$ to $i_2$. 
+Without loss of {\color{blue}generality}, we only need to list the posterior distributions for a single group. For notational convenience, we drop all the superscripts for group. The subscript ``$post$'' is used to indicate the quantity is based on posterior distribution. 
 Subject level:
-\setcounter{equation}{0}
 \begin{eqnarray}
-\label{post-beta}
-\vbeta\s &\sim& N(\vmu_{\vbeta,post}\s, \Sigma_{\vbeta,post}\s)\\
 \label{post-phi}
-\vphi\s &\sim& N(\vphi_{\vphi,post}\s, \Sigma_{\vphi,post}\s)\\
-\label{post-d}
-\vd\s &\sim& N(\vmu_{\vd,post}\s, \Sigma_{\vd,post}\s)\\
+\vphi\s &\sim& N(\vmu_{\vphi,post}\s, \Sigma_{\vphi,post}\s)\\
 \label{post-xi}
 \vxi_{pq}\s &\sim& Multi{\color{blue}nomial}(1, \vpi_{pq, post}\s)\\
+\label{post-d}
+\vd\s &\sim& N(\vmu_{\vd,post}\s, \Sigma_{\vd,post}\s)\\
+\label{post-beta}
+\vbeta\s &\sim& N(\vmu_{\vbeta,post}\s, \Sigma_{\vbeta,post}\s)\\
 \label{post-omega}
-\Omega\s &\sim& Wishart(\Omega_{post}\s, \nu_{\Omega,post}\s) 
+\Sigma\s &\sim& InvWishart(\Sigma_{post}\s, \nu_{\Sigma,post}\s) 
 \end{eqnarray}
 where   
 \begin{eqnarray}
-\Sigma_{\vbeta,post}\s&=& (R\sum_{t=L+1}^{T}(\tilde{X}\s(t))'\Omega\s\tilde{X}\s(t)+{\color{blue}(\Sigma_{\vbeta}\gs)}^{-1})^{-1} \\
-\vmu_{\vbeta,post}\s &=& \Sigma_{\vbeta,post}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\tilde{X}\s(t))'\Omega\s\tilde{\vy}\sr(t)+{\color{blue}(\Sigma_{\vbeta}\gs)^{-1}\vmu_{\vbeta}\gs})\\
-\Sigma_{\vd,post}\s&=& (R\sum_{t=L+1}^{T}(\tilde{Z}\s(t))'\Omega\s\tilde{Z}\s(t)+{\color{blue}(\Sigma_{\vd}\gs)}^{-1})^{-1} \\
-\vmu_{\vd,post}\s &=& \Sigma_{\vd,post}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\tilde{Z}\s(t))'\Omega\s\tilde{\vy}_0\sr(t)+{\color{blue}(\Sigma_{\vd}\gs)^{-1} \vmu_{\vd}\gs})\\
-\Sigma_{\vphi,post}\s&=& ({\color{blue}\sum_{r=1}^R}\sum_{t=L+1}^{T}(\tilde{W}\sr(t))'\Omega\s\tilde{W}\sr(t)+ {\color{blue}(\Sigma_{\vphi}\gs)}^{-1})^{-1} \\
-\vmu_{\vphi,post}\s &=& \Sigma_{\vphi,post}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\tilde{W}\sr(t))'\Omega\s\vu\sr(t)+ {\color{blue}(\Sigma_{\vphi}\gs)^{-1} \vmu_{\vphi}\gs})\\
+ \nonumber
+\Sigma_{\vbeta,post}\s&=& (R\sum_{t=L+1}^{T}(\tilde{X}\s(t))'(\Sigma\s)^{-1}\tilde{X}\s(t)+{\color{blue}(\Sigma_{\vbeta}\gs)}^{-1})^{-1} \\  \nonumber
+\vmu_{\vbeta,post}\s &=& \Sigma_{\vbeta,post}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\tilde{X}\s(t))'(\Sigma\s)^{-1}\tilde{\vy}\sr(t)+{\color{blue}(\Sigma_{\vbeta}\gs)^{-1}\vmu_{\vbeta}\gs})\\  \nonumber
+\Sigma_{\vd,post}\s&=& (R\sum_{t=L+1}^{T}(\tilde{Z}\s(t))'(\Sigma\s)^{-1}\tilde{Z}\s(t)+{\color{blue}(\Sigma_{\vd}\gs)}^{-1})^{-1} \\  \nonumber
+\vmu_{\vd,post}\s &=& \Sigma_{\vd,post}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\tilde{Z}\s(t))'(\Sigma\s)^{-1}\tilde{\vy}_0\sr(t)+{\color{blue}(\Sigma_{\vd}\gs)^{-1} \vmu_{\vd}\gs})\\ \nonumber
+\Sigma_{\vphi,post}\s&=& ({\color{blue}\sum_{r=1}^R}\sum_{t=L+1}^{T}(\tilde{W}\sr(t))'(\Sigma\s)^{-1}\tilde{W}\sr(t)+ {\color{blue}(\Sigma_{\vphi}\gs)}^{-1})^{-1} \\  \nonumber
+\vmu_{\vphi,post}\s &=& \Sigma_{\vphi,post}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\tilde{W}\sr(t))'(\Sigma\s)^{-1}\vu\sr(t)+ {\color{blue}(\Sigma_{\vphi}\gs)^{-1} \vmu_{\vphi}\gs})\\  \nonumber
 %\end{eqnarray}
 %\begin{eqnarray}
 %\vpi_{pq, post}\s &=& [\vpi_{pq, post}\s(0), \dots, \vpi_{pq, post}\s(L)] \\
 %\vpi_{pq, post}\s(j) &\propto& \vpi_{pq}\s(j)^{I(\vxi_{pq}\s=\vell_j)}\lik_{\vxi_{pq}\s}(\vell_j), ~j=0,\dots, L; ~\text{and } \sum_{j=0}^L \vpi_{pq, post}\s(j) = 1 \\%\frac{}{\sum_{j=0}^L \vpi_{pq, post}\s(j)} \\
-\vpi_{pq, post}\s(j) &\propto& {\color{blue}\vpi_{pq}\gs(j)}^{I(\vxi_{pq}\s=\vell_j)}\times \exp\{ -\half\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\vu\sr(t)-W\sr(t)\vphi\s_{(pq,j)})' \\
-&\times&\Omega\s(\vu\sr(t)-W\sr(t)\vphi\s_{(pq,j)})\}\\
-j&=&0,\dots, L; ~\text{and } \sum_{j=0}^L \vpi_{pq, post}\s(j) = 1 \\%\frac{}{\sum_{j=0}^L \vpi_{pq, post}\s(j)} \\
-\Omega_{post}\s&=& (SSE\s + {\color{blue}(\Omega\gs)}^{-1})^{-1}\\
-\nu_{\Omega,post}\s&=& R\times(T - L) +\nu_{\Omega}\\
+\vpi_{pq, post}\s(j) &\propto& {\color{blue}\vpi_{pq}\gs(j)}\times \exp\{ -\half\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\vu\sr(t)-W\sr(t)\vphi\s_{(pq,j)})' \\  \nonumber
+&\times&(\Sigma\s)^{-1}(\vu\sr(t)-W\sr(t)\vphi\s_{(pq,j)})\}\\  \nonumber
+j&=&0,\dots, L; ~\text{and } \sum_{j=0}^L \vpi_{pq, post}\s(j) = 1 \\  \nonumber
+%\frac{}{\sum_{j=0}^L \vpi_{pq, post}\s(j)} \\
+\Sigma_{post}\s&=& SSE\s + {\color{blue}\Sigma\gs}\\ \nonumber
+\nu_{\Sigma,post}\s&=& R\times(T - L) +\nu_{\Sigma}\\
 \label{SSE}
 SSE\s &=& \sum_{r=1}^{R}\sum_{t=L+1}^{T}(\tilde{\vy}\sr(t) - \tilde{X}\s(t)\vbeta\s)(\tilde{\vy}\sr(t) - \tilde{X}\s(t)\vbeta\s)' 
 \end{eqnarray}
 
+$\vphi\s_{(pq,j)}$ is defined to be the same as the latest value of $\vphi\sst$, except that the corresponding elements are set to satisfy that $[\Phi_k\sst(1)_{pq}, \dots, \Phi_k\sst(L)_{pq}]=\vell_j$, for both $k=1,2$. 
+
 Group level:
 \begin{eqnarray}
 \label{beta-group}
-{\color{blue}\vmu_{\vbeta}^g} &\sim& N(\vmu_{\vmu_{\vbeta},post},\Sigma_{\vmu_{\vbeta},post})\\
+{\color{blue}\vmu_{\vbeta}^g} &\sim& N(\vmu_{\vmu_{\vbeta},post},~\Sigma_{\vmu_{\vbeta},post})\\
 \label{phi-group}
-{\color{blue}\vmu_{\vphi}^g} &\sim& N(\vmu_{\vmu_{\vphi},post},\Sigma_{\vmu_{\vphi},post})\\
+{\color{blue}\vmu_{\vphi}^g} &\sim& N(\vmu_{\vmu_{\vphi},post},~\Sigma_{\vmu_{\vphi},post})\\
 \label{d-group}
-{\color{blue}\vmu_{\vd}^g} &\sim& N(\vmu_{\vmu_{\vd},post},\Sigma_{\vmu_{\vd},post})\\
+{\color{blue}\vmu_{\vd}^g} &\sim& N(\vmu_{\vmu_{\vd},post},~\Sigma_{\vmu_{\vd},post})\\
 \label{sigbeta-group}
-{\color{blue}(\Sigma_{\vbeta}^g(i,i))}^{-1} &\sim& Gamma(a_{\vbeta_i,post},b_{\vbeta_i,post}), ~ i =1, \dots, P\\
+{\color{blue}\Sigma_{\vbeta}^g(i,i)} &\sim& InvGamma(a_{\vbeta_i,post},~b_{\vbeta_i,post}), ~ i =1, \dots, P\\
 \label{sigphi-group}
-{\color{blue}(\Sigma_{\vphi}^g(i,i))}^{-1} &\sim& Gamma(a_{\vphi_i,post},b_{\vphi_i,post}),~ i =1, \dots, 2LP^2\\
-{\color{blue}(\Sigma_{\vd}^g(i,i))}^{-1} &\sim& Gamma(a_{\vd_i,post},b_{\vd_i,post}),~ i =1, \dots, PJ\\
+{\color{blue}\Sigma_{\vphi}^g(i,i)} &\sim& InvGamma(a_{\vphi_i,post},~b_{\vphi_i,post}),~ i =1, \dots, 2LP^2\\
+{\color{blue}\Sigma_{\vd}^g(i,i)} &\sim& InvGamma(a_{\vd_i,post}, ~b_{\vd_i,post}),~ i =1, \dots, PJ\\
 \label{pi-group}
 {\color{blue}\vpi_{pq}^g} &\sim& Dir(\valpha_{\vpi,post})\\
 \label{omega-group}
-{\color{blue}(\Omega^{g})}^{-1} &\sim& Wishart(\Sigma_{post}, \nu_{post}) 
+{\color{blue}\Sigma^{g}} &\sim& InvWishart(\Sigma_{post}, ~\nu_{post}) 
 \end{eqnarray}
 where
-\begin{eqnarray}
+\begin{eqnarray*}
 \vmu_{\vmu_{\vbeta},post}&=& \Sigma_{\vmu_{\vbeta},post}(\Sigma_{\vbeta}^{-1}\sum_{s=1}^S \vbeta\s + \Sigma_{\vmu_{\vbeta},0}^{-1}\vmu_{\vmu_{\vbeta},0})\\
 \Sigma_{\vmu_{\vbeta},post}&=& (S\Sigma_{\vbeta}^{-1} + \Sigma_{\vmu_{\vbeta},0}^{-1})^{-1}\\
 \vmu_{\vmu_{\vphi},post}&=& \Sigma_{\vmu_{\vphi},post}(\Sigma_{\vphi}^{-1}\sum_{s=1}^S \vphi\s + \Sigma_{\vmu_{\vphi},0}^{-1}\vmu_{\vmu_{\vphi},0})\\
@@ -79,9 +266,11 @@ b_{\vphi_i,post}=\half\sum_{s=1}^S (\vphi\s_p)^2 + b_{\vphi}\\
 %a_{\vd_i,post}&=&\half S + a_{\vd}\\
 %b_{\vd_i,post}&=&\half\sum_{s=1}^S (\vd\s_p)^2 + b_{\vd}\\
 \valpha_{\vpi,post}(j)&=& \sum_{s=1}^S I(\vxi_{pq}\s=\vell(j)) + \valpha_{\vpi}\\
-\Sigma_{post} &=& (\sum_{s=1}^S \Omega\s + \Sigma_0^{-1})^{-1}, ~~
-\nu_{post} = S\nu_{\Omega} + \nu_0
-\end{eqnarray}
+% \Sigma_{post} &=& (\sum_{s=1}^S (\Sigma\s)^{-1} + \Sigma_0^{-1}), ~~
+% \nu_{post} = S\nu_{\Omega} + \nu_0
+\Sigma_{post} &=& \left(\sum_{s=1}^S (\Sigma\s)^{-1}\right)^{-1}, ~~
+\nu_{post} = S\nu_{\Sigma}
+\end{eqnarray*}
 
 
 %\section*{\uppercase{Appendix}-ii}
@@ -90,9 +279,9 @@ b_{\vphi_i,post}=\half\sum_{s=1}^S (\vphi\s_p)^2 + b_{\vphi}\\
   \item \label{sample-initialize}
 Initialize:
 	\begin{enumerate}  
-	\item Set the initial values for group-level parameters: $\Sigma_{\vphi}(i,i)$ and $\Sigma_{\vbeta}(i,i)$ set to relatively large values, $\Omega^{g_s} = I$. 
+	\item Set the initial values for group-level parameters: set $\Sigma_{\vphi}(i,i)$ and $\Sigma_{\vbeta}(i,i)$ to relatively large values, and set $\Sigma^{g_s} = (\nu_{\Sigma}+P+1)I$. 
 	{\color{blue}
-	\item Initialize the subject-level parameters: calculate the posterior modes for $\vbeta\s$ and $\vd\s$ by conditional maximization, based on the fixed group parameters and $\Omega\s=I$, $\vphi\s=\vzero$; initialize $\vbeta\s$ and $\vd\s$ by those posterior modes. Apply VAR($L$) on the resulting residuals and calculate the point estimates $\hat{\vphi}\s$ and $\hat{\Omega}\s$; initialize $\vphi\s$ and $\xi_{pq}\s(\ell)$ as $[\hat{\vphi}\s, \hat{\vphi}\s]$ and $\vell_j$ s.t. $j = argmax_{0\le j'\le L}\{\hat{\phi}_{pq}\s(\ell)<0.1, ~\forall \ell=1,\dots, j'\}$, and initialize $\Omega\s$ as $\hat{\Omega}$. 
+	\item Initialize the subject-level parameters: calculate the posterior modes for $\vbeta\s$ and $\vd\s$ by conditional maximization, based on the fixed group parameters and $\Sigma\s=I$, $\vphi\s=\vzero$; initialize $\vbeta\s$ and $\vd\s$ by those posterior modes. Apply VAR($L$) on the resulting residuals and calculate the point estimates $\hat{\vphi}\s$ and $\hat{\Sigma}\s$; initialize $\vphi\s$ as $[\hat{\vphi}\s, \hat{\vphi}\s]$ and $\xi_{pq}\s$ as $\vell_j$ s.t. $j = argmin_{0\le j'\le L}\{\hat{\phi}_{pq}\s(\ell)<0.1, ~\forall \ell=j'+1,\dots, L\}$, and initialize $\Sigma\s$ as $\hat{\Sigma}\s$. 
 %from Equation \eqref{h_conv_s} in the paper separately for each subject, and assign to be the intial values of $\vbeta\s$ and $\vd\s$, respectively.	 
 	}
 %	\item Initialize subject level parameters by sampling $\vphi_{i}\s \stackrel{ind}{\sim} N(0, \frac{3}{10}), ~ i=1,2,\dots, 2LP^2$, %$\vd\s \sim N(\hat{\vmu}_{\vd}, \hat{\Sigma}_{\vd})$, $\vxi_{pq}\s =\vell(0), ~p,q=1,\dots, P$, $\Omega\s = (\frac{1}{R(T - L)}\sum_{t,r} (\vy\sr(t)-\bar{\vy}\s)(\vy\sr(t)-\bar{\vy}\s)')^{-1}$, where $\bar{\vy}\s = \frac{1}{T\cdot R}\sum_{t,r} \vy\sr(t)$. Calculate the OLSE from Equation \eqref{h_conv_s} in the paper separately for each subject, and assign to be the intial values of $\vbeta\s$ and $\vd\s$, respectively.
@@ -100,28 +289,33 @@ Initialize:
   \item \label{sample-subject}
 Sample {\color{blue}the subject parameters} for each subject $s$ separately: based on the latest value of all other parameters, 
 	\begin{enumerate}  
-	  \item Sample from posterior \eqref{post-phi}, \eqref{post-xi}. Update $\vphi\sst$, $\tilde{\vy}\sr(t)$ and $\tilde{Z}\s(t)$ according to Equation \eqref{phistar}, \eqref{ytilde}, and \eqref{Ztilde} in the paper.
+	  \item Sample from posterior \eqref{post-phi}. Update $\vphi\sst$ according to Equation \eqref{phistar}.
+	  \item Sample from posterior \eqref{post-xi} for each pair $(p,q)$ sequentially in a random order, and update the corresponding elements in $\vphi\sst$. After looping over all $(p,q)$'s, update $\tilde{\vy}\sr(t)$ and $\tilde{Z}\s(t)$ according to Equations \eqref{ytilde} and \eqref{Ztilde} in the paper.
 	  \item Sample from posterior \eqref{post-d}. Update $\tilde{X}\s(t)$ according to Equation \eqref{Xtilde} in the paper.
-	   \item Sample from posterior \eqref{post-beta}. Update $\tilde{\vy}_0\sr(t)$, $U\sr(t)$, $\tilde{W}\sr(t)$ and $SSE\s$ according to Equation \eqref{y0tilde}, \eqref{Wtilde1}, and \eqref{Wtilde3} in the paper, and Equation \eqref{SSE}.
+	   \item Sample from posterior \eqref{post-beta}. Update $\tilde{\vy}_0\sr(t)$, $U\sr(t)$, $\tilde{W}\sr(t)$ and $SSE\s$ according to Equations \eqref{y0tilde}, \eqref{maineq}, %\eqref{Wtilde1}, \eqref{Wtilde2}, and 
+	   \eqref{Wtilde3} in the paper, and Equation \eqref{SSE}.
 	   \item Sample from posterior \eqref{post-omega}. 
 	\end{enumerate}  
  \item \label{sample-pilot}
-Refine the initial values for the subject parameters by repeating only Step \ref{sample-subject} for a certain amount of iterations (pilot estimation), and continue {\color{blue}to} the next steps (formal estimation) {\color{blue}with} the latest iteration. 
+Refine the initial values for the subject parameters: repeat only Step \ref{sample-subject} for a certain amount of iterations (pilot estimation), use the parameter values at the latest iteration as the initial values for the next steps (formal estimation). 
+ \item \label{sample-update}
+Repeat Step \ref{sample-subject} for all the subjects for 5 iterations (thinning for only the subject-level parameters), and then repeat Step \ref{sample-group}.
   \item \label{sample-group}
-Aggregate the latest information across subjects and update for group level: 
+Aggregate the latest information across subjects and update for the group level: 
 %  	\begin{enumerate}  
 %     \item 
-Sample from posterior \eqref{beta-group}, \eqref{phi-group}, %\eqref{d-group}, 
-     \eqref{sigbeta-group}, \eqref{sigphi-group}, \eqref{phi-group}, \eqref{omega-group}.
+Sample from posterior \eqref{beta-group}, \eqref{phi-group}, \eqref{d-group} (skip this sampling step if $\vmu_{\vd}\g$ is fixed as a constant), 
+     \eqref{sigbeta-group}, \eqref{sigphi-group}, \eqref{pi-group}, \eqref{omega-group}.
 %	\end{enumerate}  
- \item \label{sample-update}
-Repeat Step \ref{sample-subject} for all the subjects for 5 iterations, and then repeat Step \ref{sample-group}.
  \item \label{sample-repeat}
-Repeat the previous step until the chain reaches the pre-specified size (e.g. 5,000) after a certain burn-in period of Step \ref{sample-update}.   
+Repeat Steps \ref{sample-update} and \ref{sample-group} until the chain reaches the pre-specified size (e.g. 5,000) after a certain burn-in period.   
 \end{enumerate}
 
 
+Notice that here we update the subject parameters for 4 additional iterations and only store the last one in the MCMC sample, i.e., thinning for only the subject parameters. This is because the spike and slab prior causes high sampling autocorrelation for the subject parameters. By doing so, we efficiently reduce the autocorrelation and thus increase the effective sample size without having to increase the iterations for the entire set of parameters. 
 
+
+{\color{violet} The code for the algorithm is available on \url{https://github.com/soapless/Hierarchical_BVAR_fMRI_multisub}. }
 
 %\section*{\uppercase{Appendix}-iii}
 \subsection*{Parameter Values Used in Simulation Study} 
@@ -129,10 +323,10 @@ Repeat the previous step until the chain reaches the pre-specified size (e.g. 5,
 \item Mean and covariance matrix for generating $\vbeta\s$:
 \vspace{-.1in}
 \begin{eqnarray*}
-\E\vbeta &=& [27,  3,  18, 30, 33; 15,  3, 23, 4, 26; \vzero_5']'\\
+\E(\vbeta\s) &=& [27,  3,  18, 30, 33; 15,  3, 23, 4, 26; \vzero_5']'\\
 %\end{eqnarray}
 %\begin{eqnarray}
-\Cov(\beta_{pk}, \beta_{qj}) &=&
+\Cov(\beta_{pk}\s, \beta_{qj}\s) &=&
 \begin{cases}
 3.556, &\text{ if } p=q, ~p\ne 2, ~k=j\\
 %0.395, &\text{ if } p=q, ~p\ne 2, ~k\ne j
@@ -143,15 +337,15 @@ Repeat the previous step until the chain reaches the pre-specified size (e.g. 5,
 \end{cases}
 \end{eqnarray*}
 
-\item Covariance matrix for generating $\vphi\s$: $0.05^2I_{2LP^2}$
-\item HRF basis coefficient $\vd\s$:
+\item Covariance matrix for generating $\vphi\s$: $0.05^2I_{2LP^2}$; the mean values are listed in Figure \ref{sim-eff}(a) in the paper.  
+\item Mean and covariance matrix for generating $\vd\s$:
 \begin{eqnarray*}
 \E\vd_1\s &=& [1.9783, ~ 2.4983, ~ 1.7715,~ -0.7298, ~ 0.3259]\\
 \E\vd_2\s &=& [2.5797, ~-0.2253,~  0.1054, ~ 0.5102,~ -0.1120]\\
 \E\vd_3\s = \E\vd_4\s &=& [2.4341, ~ 0.4343, ~ 0.5088, ~ 0.2099,~ -0.0059]\\
 \E\vd_5\s &=& [2.7224,~ -0.8712,~ -0.2898, ~ 0.8043,~ -0.2158]\\ 
-\Cov(\vd_{p}) &=& diag\{0.05587,~ 0.2529, ~0.1547, ~0.1152, ~0.04066\}\\
-\vd_{p} &\perp& \vd_{q}, ~ p\ne q
+\Cov(\vd_{p}\s) &=& diag\{0.05587,~ 0.2529, ~0.1547, ~0.1152, ~0.04066\}, ~~\forall ~p\\
+\vd_{p}\s &\perp& \vd_{q}\s, ~~ \forall ~p\ne q
 \end{eqnarray*}
 
 % > round(t(dmat_group),4)
@@ -171,21 +365,21 @@ Repeat the previous step until the chain reaches the pre-specified size (e.g. 5,
 % [4,]  0.0000000  0.000000000    0   16  0.000000000
 % [5,] -0.3002111 -0.005628958    0    0 16.005628958
 \begin{eqnarray*}
-(\Sigma\s)^{-1} = \Omega\s = 
+\Sigma\s =
 \begin{bmatrix}
 0.0625 & -0.00117 & 0 & 0 & 0.00117 \\
 -0.00117 & 0.0625 & 0 & 0 & 0 \\
 0 & 0 & 0.0625 & 0 & 0 \\
 0 & 0 & 0 & 0.0625 & 0 \\
 0.00117 & 0 & 0 & 0 & 0.0625 
-\end{bmatrix}
+\end{bmatrix}^{-1}
 \end{eqnarray*}
 
 \end{itemize}
 
 {\color{blue}
-\subsection*{VB Algorithm}
-}
+\subsection*{Variational Bayes Algorithm}
+
 % \begin{eqnarray}
 % \label{VB-beta}
 % \vbeta\s &\sim& N(\vmu_{\vbeta,VB}\s, \Sigma_{\vbeta,VB}\s)\\
@@ -199,71 +393,88 @@ Repeat the previous step until the chain reaches the pre-specified size (e.g. 5,
 % \Omega\s &\sim& Wishart(\Omega_{VB}\s, \nu_{\Omega,VB}\s) 
 % \end{eqnarray}
 % where 
-We first introduce some notations. Let $\odot$ denote element-wise matrix or vector multiplication, and $Bdiag_2\{\vx\}$ denote $Bdiag\{\vx, \vx\}$. 
-$\tilde{\mu}_{\Phi,k}\s(\ell)$ denotes the matrix formed by the corresponding elements in the vector $\tilde{\mu}_{\vphi}\s$ for lag $\ell$ and condition $k$; 
-$\tilde{\mu}_{\xi_{pq}\s(\ell)}$ denotes $\E_q\xi_{pq}\s(\ell)$; 
-$\tilde{\mu}_{\vxi}\s(\ell)$ denotes the matrix $[\tilde{\mu}_{\xi_{pq}\s(\ell)}]_{p,q=1}^{P}$; 
-$\tilde{\Sigma}_{\vxi_{pq}\s(\ell), \vxi_{p'q'}(\ell')}\s$ denotes $\Cov_q(\xi_{pq}\s(\ell), \xi_{p'q'}\s(\ell'))$; 
+We first introduce the notation. Let $\odot$ denote element-wise matrix or vector multiplication, and $Bdiag_2\{\vx\}$ denote $Bdiag\{\vx, \vx\}$. 
+Let $\tilde{\mu}_{\Phi,k}\s(\ell)$ denote the $P\times P$ matrix formed by the corresponding elements in the vector $\tilde{\mu}_{\vphi}\s$ for lag $\ell$ and condition $k,$ 
+$\tilde{\mu}_{\vxi_{pq}\s(\ell)}$ denote $\E_Q(\vxi_{pq}\s(\ell)),$ 
+$\tilde{\mu}_{\vxi}\s(\ell)$ denote the matrix $[\tilde{\mu}_{\vxi_{pq}\s(\ell)}]_{p,q=1,\dots,P},$ 
+$\tilde{\Sigma}_{\vxi_{pq}\s(\ell), \vxi_{p'q'}(\ell')}\s$ denote $\Cov_Q(\vxi_{pq}\s(\ell), 
+\vxi_{p'q'}\s(\ell')),$ 
 %denotes $[\vecn\{\tilde{\mu}_{\vxi}\s(1)\}', \dots, \vecn\{\tilde{\mu}_{\vxi}\s(L)\}']'$ 
-$\tilde{\mu}_{\vxi}\s$ and $\tilde{\Sigma}_{\vxi}\s$ denotes the mean and the covariance matrix under $q(\cdot)$ for $\vxi\s=[\vecn\{{\vxi}\s(1)\}', \dots, \vecn\{{\vxi}\s(L)\}']'$ and they are formed by the elements of $\tilde{\mu}_{\vxi}\s(\ell)$ and $\tilde{\Sigma}_{\vxi_{pq}\s(\ell); 
-\vxi_{p'q'}(\ell')}\s$, $\tilde{\mu}_{\beta,pk}\s$ denotes the element in $\tilde{\mu}_{\vbeta}\s$ for ROI $p$ and condition $k$; 
-$\tilde{\mu}_{\vbeta,0}\s$ denotes the element in $\tilde{\mu}_{\vbeta}\s$ for all the intercepts; 
-$\tilde{\mu}_{\vd,p}\s$ denotes the elements in $\tilde{\mu}_{\vd}\s$ for ROI $p$; 
-$\vi_{\ell}$ denotes the index vector $[1,\dots,\ell, L+1, \dots, L+\ell]'$; 
-$\vi^{\phi}_{pq}$ denotes the index vector $[p+(q-1)P+(1-1)P^2, \dots, p+(q-1)P+(L-1)P^2, p+(q-1)P+(1-1)P^2+ LP^2, \dots, p+(q-1)P+(L-1)P^2 + LP^2]'$ and $-\vi^{\phi}_{pq}$ denotes the complement of $\vi^{\phi}_{pq}$ with respective to $1:(2LP^2)$; 
-$\vi^{\xi}_{pq}$ denotes the index vector $[p+(q-1)P+(1-1)P^2, \dots, p+(q-1)P+(L-1)P^2]'$ and $-\vi^{\xi}_{pq}$ denotes the complement of $\vi^{\xi}_{pq}$ with respective to $1:(LP^2)$; 
-$\vx(\vi)$ denotes the vector formed by $\vx$'s elements ($\vi=[\vi(1),\vi(2),\dots, \vi(n)]$); 
-$A(:,\vi)$ (or $A(\vi,:)$) denotes the matrix formed by $A$'s $\vi(1)$-th, $\vi(2)$-th, $\dots$, and $\vi(n)$-th columns (or rows); 
-$\tilde{\mu}_{\vxi,{pq}}$ denotes $\tilde{\mu}_{\vxi}(\vi^{\xi}_{pq})$, and $\tilde{\mu}_{\vxi,{-pq}}$ denotes $\tilde{\mu}_{\vxi}(-\vi^{\xi}_{pq})$. 
+$\tilde{\mu}_{\vxi}\s$ and $\tilde{\Sigma}_{\vxi}\s$ denote, respectively, the mean and the covariance matrix under $Q(\cdot)$ for $\vxi\s=[\vecn\{{\vxi}\s(1)\}', \dots, \vecn\{{\vxi}\s(L)\}']'$ and they are 
+formed by the elements of $\tilde{\mu}_{\vxi}\s(\ell)$ and $\tilde{\Sigma}_{\vxi_{pq}\s(\ell), 
+\vxi_{p'q'}(\ell')}\s.$ Let $\tilde{\mu}_{\beta,pk}\s$ denote the element in $\tilde{\mu}_{\vbeta}\s$ for ROI $p$ and condition $k,$
+$\tilde{\mu}_{\vbeta,0}\s$ denote the intercept elements in $\tilde{\mu}_{\vbeta}\s$,
+and $\tilde{\mu}_{\vd,p}\s$ denote all the elements in $\tilde{\mu}_{\vd}\s$ for ROI $p.$ 
+Let $\vi_{\ell}$ denote the index vector $[1,\dots,\ell, L+1, \dots, L+\ell]'$,
+$\vi^{\phi}_{pq}$ denote the index vector $[p+(q-1)P+(1-1)P^2, \dots, p+(q-1)P+(L-1)P^2, p+(q-1)P+(1-1)P^2+ LP^2, \dots, p+(q-1)P+(L-1)P^2 + LP^2]',$ $-\vi^{\phi}_{pq}$ denote the complement of $\vi^{\phi}_{pq}$ with respective to $\{1:(2LP^2)\}$, 
+$\vi^{\xi}_{pq}$ denote the index vector $[p+(q-1)P+(1-1)P^2, \dots, p+(q-1)P+(L-1)P^2]'$, and $-\vi^{\xi}_{pq}$ denote the complement of $\vi^{\xi}_{pq}$ with respective to $\{1:(LP^2)\}.$ Let
+$\vx(\vi)$ (where $\vi=[\vi(1),\vi(2),\dots, \vi(n)]$) denote the column vector formed by $\vx$'s $\vi(1)$-th, $\vi(2)$-th, $\dots$, 
+and $\vi(n)$-th elements,
+and $A(:,\vi)$ (or $A(\vi,:)$) denote the matrix formed by $A$'s $\vi(1)$-th, $\vi(2)$-th, $\dots$, 
+and $\vi(n)$-th columns (or rows). Finally, let
+$\tilde{\mu}_{\vxi,{pq}}$ denote 
+$\tilde{\mu}_{\vxi}(\vi^{\xi}_{pq})$, and $\tilde{\mu}_{\vxi,{-pq}}$ denote $\tilde{\mu}_{\vxi}(-\vi^{\xi}_{pq})$. 
 
-The VB algorithm iteratively updates $\tilde{\mu}_{\vbeta}\s$, $\tilde{\Sigma}_{\vbeta}\s$, $\tilde{\mu}_{\vd}\s$, $\tilde{\Sigma}_{\vd}\s$, $\tilde{\mu}_{\vphi}\s$, $\tilde{\Sigma}_{\vphi}\s$, $\tilde{\vpi}_{pq}\s$, $\tilde{\nu}_{\Omega}\s$ and $\tilde{\mu}_{\Omega}\s$ until convergence, according to the following equations: 
+The Variational Bayes algorithm iteratively updates $\tilde{\mu}_{\vbeta}\s$, $\tilde{\Sigma}_{\vbeta}\s$, $\tilde{\mu}_{\vd}\s$, $\tilde{\Sigma}_{\vd}\s$, $\tilde{\mu}_{\vphi}\s$, $\tilde{\Sigma}_{\vphi}\s$, $\tilde{\vpi}_{pq}\s$, $\tilde{\nu}_{\Sigma}\s$ and $\tilde{\mu}_{\Sigma^{-1}}\s$ until convergence, according to the following equations: 
+First, update the equations not depending on $(p,q)$: 
 \begin{eqnarray*}
-\tilde{\vPhi}_t\s(\text{B}) &=& I_P - \sum_{\ell=1}^L\sum_{k=1}^2 c_k(t-\ell)\tilde{\mu}_{\Phi,k}\s(\ell)\odot \tilde{\mu}_{\vxi}\s(\ell)\text{B}^{\ell}\\ 
+\tilde{\vPhi}_t\s(\text{B}) &=& I_P - \sum_{\ell=1}^L\sum_{k=1}^2 c_k(t-\ell)\tilde{\mu}_{\Phi,k}\s(\ell)\odot \tilde{\mu}_{\vxi}\s(\ell)\text{B}^{\ell} ~~~\text{(operator)}\\ 
 %Z\s(t)&=& Bdiag\{\sum_{k=1}^2\Lambda_k(t,:)\mu_{\beta,1k}\s, \dots, \sum_{k=1}^2\Lambda_k(t,:)\mu_{\beta,Pk}\s\}\\
 \tilde{Z}\s(t)&=& \tilde{\vPhi}_t\s(\text{B})[Bdiag\{\sum_{k=1}^2\Lambda_k(t,:)\tilde{\mu}_{\beta,1k}\s, \dots, \sum_{k=1}^2\Lambda_k(t,:)\tilde{\mu}_{\beta,Pk}\s\}]\\
 \tilde{\vy}_0\sr(t) & = & \tilde{\vPhi}_t\s(\text{B})[\vy\sr(t) - \tilde{\mu}_{\vbeta,0}\s]\\
-\tilde{\Sigma}_{\vd}\s&=& (R\sum_{t=L+1}^{T}\tilde{Z}\s(t)'\tilde{\mu}_{\Omega}\s\tilde{Z}\s(t)+(\Sigma_{\vd}\gs)^{-1})^{-1} \\
-\tilde{\mu}_{\vd}\s &=& \tilde{\Sigma}_{\vd}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}\tilde{Z}\s(t)'\tilde{\mu}_{\Omega}\s\tilde{\vy}_0\sr(t)+(\Sigma_{\vd}\gs)^{-1}\vmu_{\vd}\gs)\\
-X\s(t)&=& Bdiag\{1,~\Lambda_1(t,:)\tilde{\mu}_{\vd,1}\s, ~\Lambda_2(t,:)\tilde{\mu}_{\vd,1}\s, \dots, 1,~\Lambda_1(t,:)\tilde{\mu}_{\vd,P}\s, ~\Lambda_2(t,:)\tilde{\mu}_{\vd,P}\s\}\\
+\tilde{\Sigma}_{\vd}\s&=& (R\sum_{t=L+1}^{T}\tilde{Z}\s(t)'\tilde{\mu}_{\Sigma^{-1}}\s\tilde{Z}\s(t)+(\Sigma_{\vd}\gs)^{-1})^{-1} \\
+\tilde{\mu}_{\vd}\s &=& \tilde{\Sigma}_{\vd}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}\tilde{Z}\s(t)'\tilde{\mu}_{\Sigma^{-1}}\s\tilde{\vy}_0\sr(t)+(\Sigma_{\vd}\gs)^{-1}\vmu_{\vd}\gs)\\
+X\s(t)&=& Bdiag\{[1,~\Lambda_1(t,:)\tilde{\mu}_{\vd,1}\s, ~\Lambda_2(t,:)\tilde{\mu}_{\vd,1}\s], \dots, [1,~\Lambda_1(t,:)\tilde{\mu}_{\vd,P}\s, ~\Lambda_2(t,:)\tilde{\mu}_{\vd,P}\s]\}\\
 \tilde{X}\s(t)&=& \tilde{\vPhi}_t\s(\text{B})[X\s(t)]\\
 \tilde{\vy}\sr(t) & = & \tilde{\vPhi}_t\s(\text{B})[\vy\sr(t)]\\
-\tilde{\Sigma}_{\vbeta}\s &=& (R\sum_{t=L+1}^{T}\tilde{X}\s(t)'\tilde{\mu}_{\Omega}\s\tilde{X}\s(t)+(\Sigma_{\vbeta}\gs)^{-1})^{-1} \\
-\tilde{\mu}_{\vbeta}\s &=& \tilde{\Sigma}_{\vbeta}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}\tilde{X}\s(t)'\tilde{\mu}_{\Omega}\s\tilde{\vy}\sr(t)+(\Sigma_{\vbeta}\gs)^{-1}\mu_{\vbeta}\gs)\\
+\tilde{\Sigma}_{\vbeta}\s &=& (R\sum_{t=L+1}^{T}\tilde{X}\s(t)'\tilde{\mu}_{\Sigma^{-1}}\s\tilde{X}\s(t)+(\Sigma_{\vbeta}\gs)^{-1})^{-1} \\
+\tilde{\mu}_{\vbeta}\s &=& \tilde{\Sigma}_{\vbeta}\s(\sum_{r=1}^{R}\sum_{t=L+1}^{T}\tilde{X}\s(t)'\tilde{\mu}_{\Sigma^{-1}}\s\tilde{\vy}\sr(t)+(\Sigma_{\vbeta}\gs)^{-1}\mu_{\vbeta}\gs)\\
 \tilde{\vu}\sr(t)&=& \vy\sr(t) - X\s(t)\tilde{\mu}_{\vbeta}\s\\
 \tilde{W}_t\sr &=& [c_1(t-1)\tilde{\vu}\sr(t)'\otimes I_P, \dots,  c_1(t-L)\tilde{\vu}\sr(t)'\otimes I_P, \\
 && c_2(t-1)\tilde{\vu}\sr(t)'\otimes I_P, \dots,  c_2(t-L)\tilde{\vu}\sr(t)'\otimes I_P]\\
-\tilde{\Sigma}_{\vphi}\s&=& (\sum_{r=1}^R\sum_{t=L+1}^{T}(\tilde{W}_t\sr)'\tilde{\mu}_{\Omega}\s\tilde{W}_t\sr\odot Bdiag_2(\tilde{\mu}_{\vxi}\s(\tilde{\mu}_{\vxi}\s)' + \tilde{\Sigma}_{\vxi}\s) +(\Sigma_{\vphi}\gs)^{-1})^{-1} \\
-\tilde{\mu}_{\vphi}\s &=& \tilde{\Sigma}_{\vphi}\s(diag\{\tilde{\mu}_{\vxi}\s,\tilde{\mu}_{\vxi}\s\}\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\tilde{W}_t\sr)'\tilde{\mu}_{\Omega}\s\tilde{\vu}\sr(t)+(\Sigma_{\vphi}\gs)^{-1}\mu_{\vphi}\gs)\\
-\nonumber
-&&\text{Loop over $(p,q)\in \{1,2,\dots, P\}^2$ in a random order:}\\
-A_1 &=& \sum_{r=1}^{R}\sum_{t=L+1}^{T}\tilde{W}_t\sr(:,\vi^{\phi}_{pq})'\tilde{\mu}_{\Omega}\s\tilde{W}_t\sr(:,\vi^{\phi}_{pq})\left(\tilde{\mu}_{\vphi}\s(\vi^{\phi}_{pq})\tilde{\mu}_{\vphi}\s(\vi^{\phi}_{pq})' + \tilde{\Sigma}_{\vphi}\s(\vi^{\phi}_{pq}, \vi^{\phi}_{pq}) \right)\\
-A_2 &=& \sum_{r=1}^{R}\sum_{t=L+1}^{T}[\tilde{W}_t\sr(:, \vi^{\phi}_{pq})'\tilde{\mu}_{\Omega}\s\tilde{W}_t\sr(:, -\vi^{\phi}_{pq}) diag\{\tilde{\mu}_{\vxi,-pq}\s, \tilde{\mu}_{\vxi,-pq}\s\} \\
+\tilde{\Sigma}_{\vphi}\s&=& (\sum_{r=1}^R\sum_{t=L+1}^{T}(\tilde{W}_t\sr)'\tilde{\mu}_{\Sigma^{-1}}\s\tilde{W}_t\sr\odot Bdiag_2(\tilde{\mu}_{\vxi}\s(\tilde{\mu}_{\vxi}\s)' + \tilde{\Sigma}_{\vxi}\s) +(\Sigma_{\vphi}\gs)^{-1})^{-1} \\
+\tilde{\mu}_{\vphi}\s &=& \tilde{\Sigma}_{\vphi}\s(diag\{[(\tilde{\mu}_{\vxi}\s)',(\tilde{\mu}_{\vxi}\s)']\}\sum_{r=1}^{R}\sum_{t=L+1}^{T}(\tilde{W}_t\sr)'\tilde{\mu}_{\Sigma^{-1}}\s\tilde{\vu}\sr(t)+(\Sigma_{\vphi}\gs)^{-1}\mu_{\vphi}\gs)
+\end{eqnarray*}
+Then, update the equations depending on $(p,q)$ using a for-loop. We need to compute them sequentially for all $(p,q)$'s. \\
+% , and we compute them  sequentially for all $(p,q)\in \{1,2,\dots, P\}^2$ in a random order: %{\ebf What does this mean???}
+For $(p,q)$ in a random permutation of $\{1,2,\dots, P\}^2$: 
+\begin{eqnarray*}
+A_1 &=& \sum_{r=1}^{R}\sum_{t=L+1}^{T}\tilde{W}_t\sr(:,\vi^{\phi}_{pq})'\tilde{\mu}_{\Sigma^{-1}}\s\tilde{W}_t\sr(:,\vi^{\phi}_{pq})\left(\tilde{\mu}_{\vphi}\s(\vi^{\phi}_{pq})\tilde{\mu}_{\vphi}\s(\vi^{\phi}_{pq})' + \tilde{\Sigma}_{\vphi}\s(\vi^{\phi}_{pq}, \vi^{\phi}_{pq}) \right)\\
+A_2 &=& \sum_{r=1}^{R}\sum_{t=L+1}^{T}[\tilde{W}_t\sr(:, \vi^{\phi}_{pq})'\tilde{\mu}_{\Sigma^{-1}}\s\tilde{W}_t\sr(:, -\vi^{\phi}_{pq}) diag\{\tilde{\mu}_{\vxi,-pq}\s, \tilde{\mu}_{\vxi,-pq}\s\} \\
 &&\times (\tilde{\mu}_{\vphi}\s(-\vi^{\phi}_{pq})'\tilde{\mu}_{\vphi}\s(\vi^{\phi}_{pq})
 +\tilde{\Sigma}_{\vphi}\s(-\vi^{\phi}_{pq}, \vi^{\phi}_{pq}))\\
-A_3 &=& \sum_{r=1}^{R}\sum_{t=L+1}^{T}\tilde{W}_t\sr(:, \vi^{\phi}_{pq})'\tilde{\mu}_{\Omega}\s \tilde{\vu}\sr(t)\\
-\tilde{\tilde{\vpi}}_{pq}\s(\ell)&= & log(\vpi_{pq}\s(\ell)\gs) -\frac{1}{2}[ tr(A_1[\vi_{\ell},\vi_{\ell}]) + 2tr(A_2[\vi_{\ell},\vi_{\ell}]) - 2\tilde{\mu}_{\phi}\s(\vi_{\ell})'A_3(\vi_{\ell})]\\
+A_3 &=& \sum_{r=1}^{R}\sum_{t=L+1}^{T}\tilde{W}_t\sr(:, \vi^{\phi}_{pq})'\tilde{\mu}_{\Sigma^{-1}}\s \tilde{\vu}\sr(t)\\
+\tilde{\tilde{\vpi}}_{pq}\s(\ell)&= & log(\vpi_{pq}\gs(\ell)) -\frac{1}{2}[ tr(A_1[\vi_{\ell},\vi_{\ell}]) + 2tr(A_2[\vi_{\ell},\vi_{\ell}]) - 2\tilde{\mu}_{\phi}\s(\vi_{\ell})'A_3(\vi_{\ell})]\\
 \ell&=&1,2,\dots, L\\
+\tilde{\tilde{\vpi}}_{pq}\s(0)&= & log(\vpi_{pq}\gs(0)), \\
 \tilde{\vpi}_{pq}\s(\ell) &=& \tilde{\tilde{\vpi}}_{pq}\s(\ell)/\sum_{j=0}^L \tilde{\tilde{\vpi}}_{pq}\s(j)\\ 
-\mu_{\vxi,pq}\s(\ell) &=& \sum_{j=1}^{\ell}\tilde{\vpi}_{pq}\s(j)\\
-\tilde{\Sigma}_{\vxi_{pq}(\ell), \vxi_{pq}(\ell')}\s &=& \sum_{j=1}^{\min\{\ell,\ell'\}}\mu_{\vxi, pq}\s(j) - \sum_{j=1}^{\ell}\sum_{j'=1}^{\ell'}\mu_{\xi,pq}\s(j)\mu_{\xi,pq}\s(j')\\ 
-\tilde{\Sigma}_{\vxi_{pq}(\ell),\vxi_{p'q'}(\ell')}\s &=& 0, ~\forall (p,q)\ne(p',q')\\
-\nonumber 
-&&\text{End of loop.}\\
-\label{SSE}
+\tilde{\mu}_{\vxi,pq}\s(\ell) &=& \sum_{j=1}^{\ell}\tilde{\vpi}_{pq}\s(j)\\
+\tilde{\Sigma}_{\vxi_{pq}(\ell), \vxi_{pq}(\ell')}\s &=& \sum_{j=1}^{\min\{\ell,\ell'\}}\tilde{\mu}_{\vxi, pq}\s(j) - \sum_{j=1}^{\ell}\sum_{j'=1}^{\ell'}\tilde{\mu}_{\vxi,pq}\s(j)\tilde{\mu}_{\vxi,pq}\s(j')\\ 
+\tilde{\Sigma}_{\vxi_{pq}(\ell),\vxi_{p'q'}(\ell')}\s &=& 0, ~\forall (p',q')\ne(p,q)
+\end{eqnarray*}
+End of for-loop.\\
+After the loop, we compute the following quantities independent of $(p,q)$
+\begin{eqnarray*}
 SSE\s &=& \sum_{r=1}^{R}\sum_{t=L+1}^{T}[\tilde{\vu}\sr(t)\tilde{\vu}\sr(t)' - \tilde{W}_t\sr\tilde{\mu}_{\vphi}\odot [\tilde{\mu}_{\vxi}', \tilde{\mu}_{\vxi}']'\tilde{\vu}\sr(t)' \\
 &&- (\tilde{W}_t\sr\tilde{\mu}_{\vphi}\odot [\tilde{\mu}_{\vxi}', \tilde{\mu}_{\vxi}']'\tilde{\vu}\sr(t)')'\\
-&& + \tilde{W}_t\sr Bidag_2(\tilde{\mu}_{\vxi}\tilde{\mu}_{\vxi}'+\tilde{\Sigma}_{\vxi})(\tilde{\mu}_{\vphi}\tilde{\mu}_{\vphi}'+\tilde{\Sigma}_{\vphi})(\tilde{W}_t\sr)']\\ 
-\tilde{\nu}_{\Omega}\s&=& R\times(T - L) +\nu_{\Omega} ~~\text{(constant)}\\
-\tilde{\mu}_{\Omega}\s&=& \tilde{\nu}_{\Omega}\s(SSE\s + (\Omega\gs)^{-1})^{-1}
+&& + \tilde{W}_t\sr Bdiag_2(\tilde{\mu}_{\vxi}\tilde{\mu}_{\vxi}'+\tilde{\Sigma}_{\vxi})(\tilde{\mu}_{\vphi}\tilde{\mu}_{\vphi}'+\tilde{\Sigma}_{\vphi})(\tilde{W}_t\sr)']\\ 
+\tilde{\nu}_{\Sigma}\s&=& R\times(T - L) +\nu_{\Sigma} ~~\text{(constant)}\\
+\tilde{\mu}_{\Sigma^{-1}}\s&=& \tilde{\nu}_{\Sigma}\s(SSE\s + \Sigma\gs)^{-1}
 \end{eqnarray*}
 Finally, we obtain 
-\begin{eqnarray}
+\begin{eqnarray*}
 \vbeta\s &\sim& N(\tilde{\mu}_{\vbeta}, \tilde{\Sigma}_{\vbeta}), \\
 \vd\s &\sim& N(\tilde{\mu}_{\vd}, \tilde{\Sigma}_{\vd}), \\
 \vphi\s &\sim& N(\tilde{\mu}_{\vphi}, \tilde{\Sigma}_{\vphi}), \\
-\vxi_{p,q}\s& \sim & Multinomial(1, \tilde{\vpi}_{pq}),\\
-\Omega\s &\sim & Wishart(\tilde{\nu}_{\Omega}\s, ~\tilde{\mu}_{\Omega}\s/\tilde{\nu}_{\Omega}\s).
-\end{eqnarray}
+\vxi_{pq}\s& \sim & Multinomial(1, \tilde{\vpi}_{pq}),\\
+(\Sigma\s)^{-1} &\sim & InvWishart((\tilde{\mu}_{\Sigma^{-1}}\s)^{-1}\tilde{\nu}_{\Sigma}\s, ~ \tilde{\nu}_{\Sigma}\s).
+\end{eqnarray*}
+}
+
+
+% \subsection*{Supplementary Figure} 
+
+
 
 % \section*{\uppercase{Appendix}-iv}
 % \subsection*{Additional Plots for Simulation Study} 
@@ -289,3 +500,9 @@ Finally, we obtain
 %\end{figure}
 
 %\newpage
+
+
+
+\end{document}
+
+
